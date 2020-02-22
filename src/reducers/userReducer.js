@@ -6,7 +6,7 @@ const userReducer = (state = {
 
     case 'ADD_NEW_USER':
       const { name, email, password, passwordConfirmation} = action.payload
-      const user = { name, email, password, passwordConfirmation}
+      const user = { name, email, password, passwordConfirmation, color: null}
       // console.log(state.currentUser, user)
       return {
         ...state,

@@ -33,9 +33,17 @@ class ColorQuiz extends React.Component {
   }
 
   render() {
+    // const currentUser = this.props.currentUser[0]
+
+    if (this.props.currentUser[0] === undefined) {
+      return <h1>Ooops!</h1>
+    } else if (this.props.currentUser[0].color !== null) {
+      return <h1>Youve already been assigned a color</h1>
+    }
     return (
+    
       <div>
-        <h3>Welcome 'new user'! Please take the Color Quiz to determine your main personality color!</h3>
+        <h3>Welcome! Please take the Color Quiz to determine your main personality color!</h3>
         <Form id="color-quiz" onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label>When I make decisions…</Form.Label>
