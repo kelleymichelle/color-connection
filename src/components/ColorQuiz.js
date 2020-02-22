@@ -1,7 +1,10 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
-export default class ColorQuiz extends React.Component {
+import { connect } from 'react-redux'
+
+class ColorQuiz extends React.Component {
 
   state = {
     answers: [],
@@ -24,11 +27,16 @@ export default class ColorQuiz extends React.Component {
     })
   }
 
+  handleSubmit = e => {
+    e.preventDefault()
+    console.log(this.state)
+  }
+
   render() {
     return (
       <div>
-        <p>Color Quiz</p>
-        <Form>
+        <h3>Welcome 'new user'! Please take the Color Quiz to determine your main personality color!</h3>
+        <Form id="color-quiz" onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label>When I make decisions…</Form.Label>
             <Form.Check
@@ -429,9 +437,14 @@ export default class ColorQuiz extends React.Component {
             />
           </Form.Group>
 
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     )
   }
 
 }
+
+const mapStateToProps = state => ({currentUser: state.currentUser})
+
+export default connect(mapStateToProps)(ColorQuiz)

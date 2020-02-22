@@ -4,9 +4,11 @@ import Button from 'react-bootstrap/Button'
 
 import {Redirect} from 'react-router-dom';
 
+import { connect } from 'react-redux';
+
 // import ColorQuiz from './ColorQuiz'
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
   state = {
     name: '',
     email: '',
@@ -24,7 +26,8 @@ export default class SignUp extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state)
+    this.props.dispatch({ type: 'ADD_NEW_USER', payload: this.state })
+    // console.log(this.state)
     this.setState({
       redirect: "/colorquiz"
     })
@@ -68,3 +71,11 @@ export default class SignUp extends React.Component {
   }
 
 }
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     addUser: formdata => dispatch({type: 'ADD_NEW_USER', payload: formdata})
+//   }
+// }
+
+export default connect()(SignUp)
