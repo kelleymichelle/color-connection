@@ -24,7 +24,7 @@ export default class SignUp extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(e)
+    console.log(this.state)
     this.setState({
       redirect: "/colorquiz"
     })
