@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
 import SignUp from './components/SignUp'
+import ColorQuiz from './components/ColorQuiz'
 // import NavBar from './components/NavBar'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
     {/* <Route exact path="/" component={App} /> */}
     <Route exact path="/signup" component={SignUp} />
+    <Route exact path="/colorquiz" component={ColorQuiz} />
   </Router>
     
   );

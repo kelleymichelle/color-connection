@@ -2,12 +2,18 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+import {Redirect} from 'react-router-dom';
+
+// import ColorQuiz from './ColorQuiz'
+
 export default class SignUp extends React.Component {
   state = {
     name: '',
     email: '',
     password: '',
-    passwordConfirmation: ''
+    passwordConfirmation: '',
+    redirect: null
+
   }
 
   handleOnChange = e => {
@@ -19,13 +25,21 @@ export default class SignUp extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log(e)
+    this.setState({
+      redirect: "/colorquiz"
+    })
+    // return < Redirect to="/ColorQuiz" />
   }
 
   render() {
-    return (
+    
+      if (this.state.redirect) {
+        return <Redirect to={this.state.redirect} />
+      } 
+      return(
       <div>
         
-        <Form style={{width: "17em"}} onSubmit={this.handleSubmit}>
+        <Form style={{width: "17em"}} onSubmit={this.handleSubmit} id="form">
           <Form.Group controlId="signup-form-name">
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" name="name" value={this.state.name} onChange={this.handleOnChange} placeholder="Enter Name" />
