@@ -11,6 +11,7 @@ import Dashboard from './containers/Dashboard'
 import Home from './containers/Home'
 import Login from './components/Login'
 import NavbarLoggedOut from './components/NavbarLoggedOut'
+// import NavbarLoggedIn from './components/NavbarLoggedIn'
 
 import axios from 'axios'
 
@@ -45,16 +46,25 @@ class App extends React.Component {
 
   handleLogout = () => {
     this.setState({
-    isLoggedIn: false,
-    user: {}
+      isLoggedIn: false,
+      user: {}
     })
+    
   }
+
+  // renderNav = () => {
+  //   if (this.isLoggedIn === true) {
+  //     return <NavbarLoggedIn />
+  //   } else {
+  //     return <NavbarLoggedOut />
+  //   }
+  // }
 
   render() {
     return (
       <Router>
     
-        <NavbarLoggedOut />
+        <NavbarLoggedOut isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout}/>
 
         <Switch>
           <Route exact path="/" component={Home} />
