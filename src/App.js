@@ -11,6 +11,7 @@ import Dashboard from './containers/Dashboard'
 import Home from './containers/Home'
 import Login from './components/Login'
 import NavbarLoggedOut from './components/NavbarLoggedOut'
+import Profile from './containers/Profile'
 // import NavbarLoggedIn from './components/NavbarLoggedIn'
 
 import axios from 'axios'
@@ -87,6 +88,7 @@ class App extends React.Component {
               <ColorQuiz {...props}
                 user={this.state.user} />
             )} />
+          <Route exact path="/user/:userId" component={Profile} />
         </Switch>
     </Router>
       

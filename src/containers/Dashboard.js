@@ -17,12 +17,20 @@ class Dashboard extends React.Component {
     }
     
     // const user = this.props.currentUser[0]
-    const user = this.props.user
+      const user = this.props.user
+      const userProfile = `/user/${user.id}`
       return(
         <>
           <h1>Welcome, {user.name}</h1>
           <div>
-            <Link to="/user/:id">View my Profile</Link>
+            <Link to=
+              {{
+                pathname: userProfile,
+                state: {
+                  user: user
+                }
+              }}>
+                View my Profile</Link>
             <Link to="/edit-about-me">Edit my Details</Link>
             <Link to="/color-info">Learn more about Color Tokens</Link>
             <Horoscope/>
