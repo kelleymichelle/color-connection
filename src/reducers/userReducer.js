@@ -25,7 +25,8 @@ const userReducer = (state = {
 
     case 'UPDATE_USER_COLOR':
       console.log(action.payload)
-      const colorQuiz = action.payload
+      const colorQuiz = { color: action.payload }
+      // debugger
       console.log(colorQuiz)
       return {
         ...state,

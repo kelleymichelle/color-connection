@@ -6,6 +6,8 @@ import {Redirect} from 'react-router-dom';
 
 import { connect } from 'react-redux'
 
+import axios from 'axios'
+
 class ColorQuiz extends React.Component {
 
   state = {
@@ -31,11 +33,32 @@ class ColorQuiz extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    this.props.dispatch({type: 'UPDATE_USER_COLOR', payload: this.state})
+    // this.props.dispatch({type: 'UPDATE_USER_COLOR', payload: this.state})
     // console.log(this.state)
-    this.setState({
-      redirect: "/dashboard"
-    })
+    // this.setState({
+    //   redirect: "/dashboard"
+    // })
+    let colorAnswers = this.state
+    let user =  this.props.user
+
+    axios.patch(`http://localhost:3001/users/${user.id}`, {colorAnswers, user}, {withCredentials: true})
+      .then(response => {
+        if (response.data) {
+          // debugger
+          const color = response.data.color
+          this.props.dispatch({ type: 'UPDATE_USER_COLOR', payload: color })
+          // this.redirect()
+          this.setState({
+            redirect: "/dashboard"
+        })
+       } else {
+          this.setState({
+            errors: response.data.errors
+          })
+        }
+      })
+      .catch(error => console.log('api errors:', error))
+
   }
 
   render() {

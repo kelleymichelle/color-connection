@@ -1,6 +1,7 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 
 import {Redirect} from 'react-router-dom';
 
@@ -43,7 +44,7 @@ class SignUp extends React.Component {
       name: name,
       email: email,
       password: password,
-      passwordConfirmation: passwordConfirmation
+      password_confirmation: passwordConfirmation
     }
     axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
       .then(response => {
@@ -63,21 +64,29 @@ class SignUp extends React.Component {
       };
 
   redirectHome = () => {
-    this.props.history.push('/dashboard')
+    this.props.history.push('/colorquiz')
   }
 
   redirect = () => {
     this.props.history.push('/')
   }
 
+  errorMessage = () => {
+    if (this.state.errors) {
+      return this.state.errors.map(err => (
+        <Alert variant="danger">{err}</Alert>
+     ))
+    }
+  }
+
   render() {
     
       if (this.state.redirect) {
         return <Redirect to={this.state.redirect} />
-      } 
+      }
       return(
       <div>
-        
+        {this.errorMessage()}
         <Form style={{width: "17em"}} onSubmit={this.handleSubmit} id="form">
           <Form.Group controlId="signup-form-name">
             <Form.Label>Name</Form.Label>

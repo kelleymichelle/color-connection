@@ -58,6 +58,11 @@ class Login extends React.Component {
   errorMessage = () => {
     if (this.props.location.state !== undefined) {
       return <Alert variant="danger">{this.props.location.state.error}</Alert>
+    } else if (this.state.errors) {
+      return this.state.errors.map(err => (
+         <Alert variant="danger">{err}</Alert>
+      ))
+      
     }
   }
 

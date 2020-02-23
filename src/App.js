@@ -73,7 +73,11 @@ class App extends React.Component {
               loggedInStatus={this.state.isLoggedIn} />
             )} />
           <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/colorquiz" component={ColorQuiz} />
+          <Route exact path="/colorquiz" 
+            render={props => (
+              <ColorQuiz {...props}
+                user={this.state.user} />
+            )} />
         </Switch>
     </Router>
       
