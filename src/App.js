@@ -52,14 +52,6 @@ class App extends React.Component {
     
   }
 
-  // renderNav = () => {
-  //   if (this.isLoggedIn === true) {
-  //     return <NavbarLoggedIn />
-  //   } else {
-  //     return <NavbarLoggedOut />
-  //   }
-  // }
-
   render() {
     return (
       <Router>
@@ -82,7 +74,11 @@ class App extends React.Component {
               handleLogin={this.handleLogin}
               loggedInStatus={this.state.isLoggedIn} />
             )} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboard" 
+            render={props => (
+              <Dashboard {...props}
+                user={this.state.user} />
+            )} />
           <Route exact path="/colorquiz" 
             render={props => (
               <ColorQuiz {...props}

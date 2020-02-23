@@ -24,6 +24,7 @@ export default function NavbarLoggedOut(props) {
       <Navbar.Brand href="/">Color Connection</Navbar.Brand>
       <Nav className="ml auto">
         <Link id="nav-link" to="/dashboard">My Dashboard</Link>
+        <Link id="nav-link" to="/messages">Messages</Link>
         <Link id="nav-link" to="/browse-people">Browse People</Link>
         <Link id="nav-link" to="/logout" onClick={handleClick}>Log Out</Link>
         <Link id="nav-link" to="/settings">Settings</Link>
