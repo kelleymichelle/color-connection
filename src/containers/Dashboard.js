@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 import Horoscope from '../components/dashboard/Horoscope'
+import ColorToken from '../components/dashboard/ColorToken'
 
 class Dashboard extends React.Component {
 
@@ -23,6 +24,7 @@ class Dashboard extends React.Component {
             <Link to="/edit-about-me">Edit my Details</Link>
             <Link to="/color-info">Learn more about Color Tokens</Link>
             <Horoscope/>
+            <ColorToken color={user.color} />
           </div>
       </>
     )
