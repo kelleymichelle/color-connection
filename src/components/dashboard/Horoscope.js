@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Card from 'react-bootstrap/Card'
+
 export default class Horoscope extends React.Component {
   state = {
     data: []
@@ -30,17 +32,19 @@ export default class Horoscope extends React.Component {
     const data = this.state.data
     if (data.description) {
       return (
-        <div>
-          <div id="horoscope">
-            <h3>Your Daily Horoscope</h3>
-            <div>Leo</div>
-            <p>{data.current_date}</p>
-            <p>{data.description}</p>
-            <p>Mood: {data.mood}</p>
-            <p>Compatibility: {data.compatibility}</p>
-            <p>Lucky Number: {data.lucky_number}</p>
-          </div>
-        </div>
+        <Card style={{ width: '19em' }}>
+          <Card.Body id="horoscope">
+            <Card.Title>Your Daily Horoscope</Card.Title>
+            <Card.Subtitle>Leo</Card.Subtitle>
+            <div>
+              <Card.Text>{data.current_date}</Card.Text>
+              <Card.Text>{data.description}</Card.Text>
+              <Card.Text>Mood: {data.mood}</Card.Text>
+              <Card.Text>Compatibility: {data.compatibility}</Card.Text>
+              <Card.Text>Lucky Number: {data.lucky_number}</Card.Text>
+            </div>
+          </Card.Body>
+        </Card>
       )
     }
     return (

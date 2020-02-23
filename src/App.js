@@ -14,6 +14,7 @@ import NavbarLoggedOut from './components/NavbarLoggedOut'
 // import NavbarLoggedIn from './components/NavbarLoggedIn'
 
 import axios from 'axios'
+import { connect } from 'react-redux'
 
 class App extends React.Component {
   state= {
@@ -37,11 +38,13 @@ class App extends React.Component {
     })
     .catch(error => console.log('api errors:', error))
   }
-  handleLogin = (data) => {
+  handleLogin = (obj) => {
+    // debugger
     this.setState({
       isLoggedIn: true,
-      user: data.user
+      user: obj.data.user
     })
+    this.props.dispatch({ type: 'LOGIN_USER', payload: this.state.user})
   }
 
   handleLogout = () => {
@@ -91,4 +94,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect()(App);

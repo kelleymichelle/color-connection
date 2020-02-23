@@ -16,11 +16,13 @@ class Dashboard extends React.Component {
       return <Redirect to={{pathname: "/login", state: {error: "Please log in or sign up"} }}/>
     }
     
-    const user = this.props.currentUser[0]
+    // const user = this.props.currentUser[0]
+    const user = this.props.user
       return(
         <>
           <h1>Welcome, {user.name}</h1>
           <div>
+            <Link to="/user/:id">View my Profile</Link>
             <Link to="/edit-about-me">Edit my Details</Link>
             <Link to="/color-info">Learn more about Color Tokens</Link>
             <Horoscope/>
