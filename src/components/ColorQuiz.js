@@ -2,12 +2,13 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+import {Redirect} from 'react-router-dom';
+
 import { connect } from 'react-redux'
 
 class ColorQuiz extends React.Component {
 
   state = {
-    answers: [],
     question1: '',
     question2: '',
     question3: '',
@@ -18,7 +19,8 @@ class ColorQuiz extends React.Component {
     question8: '',
     question9: '',
     question10: '',
-    question11: ''
+    question11: '',
+    redirect: null
   }
 
   handleChange = e => {
@@ -29,16 +31,21 @@ class ColorQuiz extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(this.state)
+    this.props.dispatch({type: 'UPDATE_USER_COLOR', payload: this.state})
+    // console.log(this.state)
+    this.setState({
+      redirect: "/dashboard"
+    })
   }
 
   render() {
-    // const currentUser = this.props.currentUser[0]
 
     if (this.props.currentUser[0] === undefined) {
-      return <h1>Ooops!</h1>
-    } else if (this.props.currentUser[0].color !== null) {
-      return <h1>Youve already been assigned a color</h1>
+      return <Redirect to={{pathname: "/login", state: {error: "Please log in or sign up"} }}/>
+    // } else if (this.props.currentUser[0].color !== null) {
+    //   return <Redirect to={{pathname: "/dashboard", state: {error: "You've already been assigned a color"}}} />
+    } else if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
     }
     return (
     

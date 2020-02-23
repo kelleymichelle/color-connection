@@ -6,6 +6,8 @@ import {Redirect} from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
+import axios from 'axios'
+
 // import ColorQuiz from './ColorQuiz'
 
 class SignUp extends React.Component {
@@ -14,8 +16,12 @@ class SignUp extends React.Component {
     email: '',
     password: '',
     passwordConfirmation: '',
+    errors: '',
     redirect: null
+  }
 
+  componentWillMmount() {
+    return this.props.loggedInStatus ? this.redirect() : null
   }
 
   handleOnChange = e => {
@@ -26,12 +32,42 @@ class SignUp extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.dispatch({ type: 'ADD_NEW_USER', payload: this.state })
+    // this.props.dispatch({ type: 'ADD_NEW_USER', payload: this.state })
     // console.log(this.state)
-    this.setState({
-      redirect: "/colorquiz"
-    })
-    // return < Redirect to="/ColorQuiz" />
+    // this.setState({
+    //   redirect: "/colorquiz"
+    // })
+    const { name, email, password, passwordConfirmation} = this.state
+
+    let user = {
+      name: name,
+      email: email,
+      password: password,
+      passwordConfirmation: passwordConfirmation
+    }
+    axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
+      .then(response => {
+        if (response.data.status === 'created') {
+          this.props.handleLogin(response.data)
+          // debugger
+          const userData = response.data.user
+          this.props.dispatch({ type: 'ADD_NEW_USER', payload: userData })
+          this.redirectHome()
+        } else {
+          this.setState({
+            errors: response.data.errors
+          })
+        }
+      })
+      .catch(error => console.log('api errors:', error))
+      };
+
+  redirectHome = () => {
+    this.props.history.push('/dashboard')
+  }
+
+  redirect = () => {
+    this.props.history.push('/')
   }
 
   render() {
