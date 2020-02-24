@@ -7,3 +7,9 @@ mood: "Charming"
 color: "Peach"
 lucky_number: "6"
 lucky_time: "6am"
+
+(
+              <Login {...props}
+              handleLogin={this.handleLogin}
+              loggedInStatus={this.state.isLoggedIn} />
+            )

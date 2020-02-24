@@ -14,8 +14,17 @@ class Login extends React.Component {
     email: '',
     password: '',
     errors: '',
+    dashboardRoute: "/dashboard",
     redirect: null
   }
+
+  componentDidUpdate() {
+    return this.props.loggedInStatus ? this.redirect() : null
+  }
+
+  // redirect = () => {
+  //   this.props.history.push('/')
+  // }
 
   handleOnChange = e => {
     this.setState({
@@ -37,7 +46,9 @@ class Login extends React.Component {
     axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
       .then(response => {
         if (response.data.logged_in) {
-          this.props.handleLogin(response.data)
+          // debugger
+          const history = this.props.history
+          this.props.handleLogin(response.data, history)
           const userData = response.data.user
           this.props.dispatch({ type: 'LOGIN_USER', payload: userData })
           // this.redirect()
@@ -69,7 +80,12 @@ class Login extends React.Component {
   render() {
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
-    }
+    } 
+    // if (this.props.loggedInStatus === true) {
+    //   this.setState({
+    //     redirect: "/dashboard"
+    //   })
+    // }
     return(
       <div>
         {this.errorMessage()}

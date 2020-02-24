@@ -11,7 +11,7 @@ const userReducer = (state = {
       console.log(newUser)
       return {
         ...state,
-        currentUser: [...state.currentUser, newUser]
+        currentUser: Object.assign(newUser)
       }
 
     case 'LOGIN_USER':
@@ -20,18 +20,25 @@ const userReducer = (state = {
       console.log(user)
     return {
       ...state,
-      currentUser: [...state.currentUser, user]
+      currentUser: Object.assign(user)
     }
 
     case 'UPDATE_USER_COLOR':
       console.log(action.payload)
       const colorQuiz = { color: action.payload }
+      const thisUser = state.currentUser
       // debugger
       console.log(colorQuiz)
       return {
         ...state,
-        currentUser: [...state.currentUser, colorQuiz]
+        currentUser: Object.assign(thisUser, colorQuiz)
       }
+
+      case 'LOGOUT_USER':
+        // const loggingOutUser = action.payload
+        return {
+          currentUser: []
+        }
       
     default:
       return state

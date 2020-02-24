@@ -21,8 +21,8 @@ class SignUp extends React.Component {
     redirect: null
   }
 
-  componentWillMmount() {
-    return this.props.loggedInStatus ? this.redirect() : null
+  componentDidUpdate() {
+    return this.props.loggedInStatus ? this.redirectHome() : null
   }
 
   handleOnChange = e => {
@@ -49,8 +49,8 @@ class SignUp extends React.Component {
     axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
       .then(response => {
         if (response.data.status === 'created') {
-          this.props.handleLogin(response.data)
           // debugger
+          this.props.handleLogin(response.data)
           const userData = response.data.user
           this.props.dispatch({ type: 'ADD_NEW_USER', payload: userData })
           this.redirectHome()
@@ -64,11 +64,11 @@ class SignUp extends React.Component {
       };
 
   redirectHome = () => {
-    this.props.history.push('/colorquiz')
+    return this.props.history.push('/colorquiz')
   }
 
   redirect = () => {
-    this.props.history.push('/')
+    return this.props.history.push('/')
   }
 
   errorMessage = () => {
@@ -83,7 +83,7 @@ class SignUp extends React.Component {
     
       if (this.state.redirect) {
         return <Redirect to={this.state.redirect} />
-      }
+      } 
       return(
       <div>
         {this.errorMessage()}

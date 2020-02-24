@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Navbar from 'react-bootstrap/Navbar'
 // import Nav from 'react-bootstrap/Nav'
+import { Redirect } from 'react-router-dom'
 
 import SignUp from './components/SignUp'
 import ColorQuiz from './components/ColorQuiz'
@@ -27,6 +28,13 @@ class App extends React.Component {
     this.loginStatus()
   }
 
+  // componentDidUpdate() {
+  //   // this.loginStatus()
+  //   this.setState({
+  //     user: this.props.user[0]
+  //   })
+  // }
+
   loginStatus = () => {
     axios.get('http://localhost:3001/logged_in', 
     {withCredentials: true})
@@ -40,20 +48,49 @@ class App extends React.Component {
     .catch(error => console.log('api errors:', error))
   }
   handleLogin = (obj) => {
+    // window.location.reload()
+    // await obj.user
+    
+    if (obj.user) {
+      const user = obj.user
+      this.keepGoing(user)
+      // this.props.dispatch({ type: 'LOGIN_USER', payload: user})
+    } else if (obj.data.user) {
+      const user = obj.data.user
+      this.keepGoing(user)
+      // this.props.dispatch({ type: 'LOGIN_USER', payload: user})
+    }
     // debugger
+    // this.props.dispatch({ type: 'LOGIN_USER', payload: user})
+    // this.setState({
+    //   isLoggedIn: true
+    //   // user: this.props.currentUser
+      
+    // })
+    // console.log(this.props)
+    // window.location.reload()
+    // debugger
+    // this.history.push("/dashboard")
+    // history.push("/dashboard")
+  }
+
+  keepGoing = user => {
+    this.props.dispatch({ type: 'LOGIN_USER', payload: user})
     this.setState({
       isLoggedIn: true,
-      user: obj.data.user
+      user: this.props.user
+      
     })
-    this.props.dispatch({ type: 'LOGIN_USER', payload: this.state.user})
+    console.log(this.props)
   }
 
   handleLogout = () => {
+    this.props.dispatch({ type: 'LOGOUT_USER', payload: '' })
     this.setState({
       isLoggedIn: false,
       user: {}
     })
-    
+    // return (<Redirect to="/" />)
   }
 
   render() {
@@ -73,11 +110,13 @@ class App extends React.Component {
             )} />
           <Route 
             exact path="/login" 
-            render={props => (
-              <Login {...props}
-              handleLogin={this.handleLogin}
-              loggedInStatus={this.state.isLoggedIn} />
-            )} />
+            render={props => {
+              return this.state.isLoggedIn ? (
+                <Redirect to="/dashboard" /> ) : ( <Login {...props}
+                handleLogin={this.handleLogin}
+                loggedInStatus={this.state.isLoggedIn} />
+              )
+            }} />
           <Route exact path="/dashboard" 
             render={props => (
               <Dashboard {...props}
@@ -96,4 +135,6 @@ class App extends React.Component {
   }
 }
 
-export default connect()(App);
+const mapStateToProps = state => ({ user: state.currentUser })
+
+export default connect(mapStateToProps)(App);

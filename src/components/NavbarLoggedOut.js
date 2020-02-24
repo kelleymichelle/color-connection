@@ -13,7 +13,7 @@ export default function NavbarLoggedOut(props) {
     axios.delete('http://localhost:3001/logout', {withCredentials: true})
     .then(response => {
       props.handleLogout()
-      props.history.push('/')
+      // props.history.push('/')
     })
     .catch(error => console.log(error))
   }
