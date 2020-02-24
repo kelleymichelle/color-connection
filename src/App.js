@@ -13,6 +13,7 @@ import Home from './containers/Home'
 import Login from './components/Login'
 import NavbarLoggedOut from './components/NavbarLoggedOut'
 import Profile from './containers/Profile'
+import UserAboutForm from './components/dashboard/UserAboutForm'
 // import NavbarLoggedIn from './components/NavbarLoggedIn'
 
 import axios from 'axios'
@@ -26,6 +27,10 @@ class App extends React.Component {
 
   componentDidMount() {
     this.loginStatus()
+  }
+
+  componentWillUnmount() {
+    
   }
 
   // componentDidUpdate() {
@@ -127,6 +132,7 @@ class App extends React.Component {
               <ColorQuiz {...props}
                 user={this.state.user} />
             )} />
+          <Route exact path="/edit-about-me" component={UserAboutForm} />
           <Route exact path="/user/:userId" component={Profile} />
         </Switch>
     </Router>

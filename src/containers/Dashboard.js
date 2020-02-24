@@ -12,8 +12,8 @@ class Dashboard extends React.Component {
 
   
   render() {
-    // if (this.props.currentUser[0] === undefined) {
-    //   return <Redirect to={{pathname: "/login", state: {error: "Please log in or sign up"} }}/>
+    // if (this.props.user.color === null) {
+    //   return (this.props.history.push('/colorquiz'))
     // }
     
     // const user = this.props.currentUser[0]

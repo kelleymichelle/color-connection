@@ -63,11 +63,12 @@ class ColorQuiz extends React.Component {
 
   render() {
 
-    if (this.props.currentUser[0] === undefined) {
-      return <Redirect to={{pathname: "/login", state: {error: "Please log in or sign up"} }}/>
-    // } else if (this.props.currentUser[0].color !== null) {
-    //   return <Redirect to={{pathname: "/dashboard", state: {error: "You've already been assigned a color"}}} />
-    } else if (this.state.redirect) {
+    // if (this.props.currentUser[0] === undefined) {
+    //   return <Redirect to={{pathname: "/login", state: {error: "Please log in or sign up"} }}/>
+    // // } else if (this.props.currentUser[0].color !== null) {
+    // //   return <Redirect to={{pathname: "/dashboard", state: {error: "You've already been assigned a color"}}} />
+    // } else 
+    if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
     }
     return (

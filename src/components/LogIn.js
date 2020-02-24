@@ -80,12 +80,11 @@ class Login extends React.Component {
   render() {
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
-    } 
-    // if (this.props.loggedInStatus === true) {
-    //   this.setState({
-    //     redirect: "/dashboard"
-    //   })
-    // }
+    } else if (this.props.loggedInStatus === true) {
+      this.setState({
+        redirect: "/dashboard"
+      })
+    }
     return(
       <div>
         {this.errorMessage()}

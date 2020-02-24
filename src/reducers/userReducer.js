@@ -34,6 +34,18 @@ const userReducer = (state = {
         currentUser: Object.assign(thisUser, colorQuiz)
       }
 
+      case 'UPDATE_USER_INFO':
+        const stillThisUser = state.currentUser
+        const birthday = { birthday: action.payload.birthday }
+        const gender = { gender: action.payload.gender }
+        const location = { location: action.payload.location }
+        // debugger
+        // console.log(birthday, gender, location)
+        return {
+          ...state,
+          currentUser: Object.assign(stillThisUser, birthday, gender, location)
+        }
+
       case 'LOGOUT_USER':
         // const loggingOutUser = action.payload
         return {
