@@ -18,7 +18,9 @@ export default function Zodiac(props) {
   }
 
   return (
-    <h1>{sign[props.zodiac]}</h1>
+    <div>
+      <h2>{sign[props.zodiac]}</h2>
+    </div>
   )
 }
 

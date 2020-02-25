@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom'
 import Horoscope from '../components/dashboard/Horoscope'
 import ColorToken from '../components/dashboard/ColorToken'
 
+import ImageUploader from '../components/profile/ImageUploader'
+
 class Dashboard extends React.Component {
 
   
@@ -35,6 +37,7 @@ class Dashboard extends React.Component {
             <Link to="/color-info">Learn more about Color Tokens</Link>
             <Horoscope/>
             <ColorToken color={user.color} />
+            <ImageUploader user={user}/>
           </div>
       </>
     )
