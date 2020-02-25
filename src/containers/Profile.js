@@ -4,6 +4,7 @@ import Zodiac from '../components/profile/Zodiac'
 import UserBio from '../components/profile/UserBio'
 import Location from '../components/profile/Location'
 import Gender from '../components/profile/Gender'
+import UserImage from '../components/profile/UserImage'
 
 export default class Profile extends React.Component {
   state = {
@@ -35,6 +36,7 @@ export default class Profile extends React.Component {
         <UserBio bio={user.bio} />
         <Location location={user.location} />
         <Gender gender={user.gender} />
+        <UserImage image={user.image} />
       </div>
     )}
     return (

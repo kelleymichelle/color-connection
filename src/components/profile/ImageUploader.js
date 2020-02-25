@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class ImageUploader extends React.Component {
   constructor(props) {
@@ -58,6 +59,10 @@ class ImageUploader extends React.Component {
       $imagePreview = (<img style={{width: '10%', height: '10%'}} src={imagePreviewUrl} alt="preview"/>);
     } else {
       $imagePreview = (<div>Please select an Image for Preview</div>);
+    }
+
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
     }
 
     return (
