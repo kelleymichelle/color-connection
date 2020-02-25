@@ -6,6 +6,8 @@ import Location from '../components/profile/Location'
 import Gender from '../components/profile/Gender'
 import UserImage from '../components/profile/UserImage'
 
+import axios from 'axios'
+
 export default class Profile extends React.Component {
   state = {
     user: []
@@ -17,10 +19,21 @@ export default class Profile extends React.Component {
       this.setState({
         user: user
       })
+    } else {
+      const userId = this.props.match.params.userId
+      this.fetchUser(userId)
     }
   }
 
   fetchUser = id => {
+    axios.get(`http://localhost:3001/users/${id}`,
+    {withCredentials: true})
+    .then(response => {
+      this.setState({
+        user: response.data.user
+      })
+    })
+    .catch(error => console.log(error))
 
   }
 
@@ -31,12 +44,12 @@ export default class Profile extends React.Component {
     return (
       <div>
         <h1>{user.name} Profile</h1>
+        <UserImage image={user.image} />
+        <Location location={user.location} />
         <ColorToken color={user.color} />
         <Zodiac zodiac={user.zodiac} />
         <UserBio bio={user.bio} />
-        <Location location={user.location} />
         <Gender gender={user.gender} />
-        <UserImage image={user.image} />
       </div>
     )}
     return (
