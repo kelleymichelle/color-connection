@@ -65,8 +65,13 @@ class ImageUploader extends React.Component {
       return <Redirect to={this.state.redirect} />
     }
 
+    if (this.props.user.image) {
+      return null
+    }
+
     return (
       <div>
+        <h1>Upload a picture for your personal page here:</h1>
         <form onSubmit={(e)=>this._handleSubmit(e)}>
           <input className="fileInput" 
             type="file" 
