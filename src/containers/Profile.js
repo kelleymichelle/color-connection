@@ -1,5 +1,6 @@
 import React from 'react'
 import ColorToken from '../components/dashboard/ColorToken'
+import Zodiac from '../components/profile/Zodiac'
 
 export default class Profile extends React.Component {
   state = {
@@ -27,6 +28,7 @@ export default class Profile extends React.Component {
       <div>
         <h1>{user.name} Profile</h1>
         <ColorToken color={user.color} />
+        <Zodiac zodiac={user.zodiac} />
       </div>
     )}
     return (
