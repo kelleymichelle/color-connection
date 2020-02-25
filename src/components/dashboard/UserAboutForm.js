@@ -4,16 +4,26 @@ import Button from 'react-bootstrap/Button'
 
 import axios from 'axios'
 
-// import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 
  class UserAboutForm extends React.Component {
+  //  constructor(props) {
+  //    super(props)
+  //    this.state = {
+  //      birthday: props.user.birthday,
+  //      gender: `${props.user.gender}`,
+  //      location: props.user.location,
+  //      redirect: ''
+  //    }
+  //  }
   state = {
     birthday: '',
     gender: '',
-    location: ''
-    // info: []
+    location: '',
+    bio: '',
+    redirect: ''
   }
 
   handleOnChange = e => {
@@ -48,31 +58,36 @@ import { connect } from 'react-redux'
   }
 
   render() {
+    
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
     return (
+      
       <div>
         <h2>Edit your personal details</h2>
         <Form style={{width: '35em'}} onSubmit={this.handleOnSubmit}>
           <Form.Group>
             <Form.Label>Birthday:</Form.Label>
-            <Form.Control type="text" name="birthday" value={this.state.birthday} onChange={this.handleOnChange} placeholder="MM/DD/YYYY"/>
+            <Form.Control type="text" name="birthday" value={this.state.birthday} onChange={this.handleOnChange} placeholder={this.props.user.birthday || "MM/DD/YYYY"}/>
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Gender</Form.Label>
-            <Form.Control type="text" name="gender" value={this.state.gender} onChange={this.handleOnChange}/>
+            <Form.Control type="text" name="gender" value={this.state.gender} onChange={this.handleOnChange} placeholder={this.props.user.gender}/>
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Location</Form.Label>
-            <Form.Control type="text" name="location" value={this.state.location} onChange={this.handleOnChange}/>
+            <Form.Control type="text" name="location" value={this.state.location} onChange={this.handleOnChange} placeholder={this.props.user.location}/>
           </Form.Group>
 
-          <Form.Group>
+          {/* <Form.Group>
             <Form.Label>Favorite Quote</Form.Label>
             <Form.Control type="text" name="quote" value={this.state.quote} />
-          </Form.Group>
+          </Form.Group> */}
 
-          <Form.Group>
+          {/* <Form.Group>
             <Form.Label>Signature drink?</Form.Label>
             <Form.Control type="text" name="drink" value={this.state.drink} placeholder="Shaken or stirred..."/>
           </Form.Group>
@@ -80,7 +95,7 @@ import { connect } from 'react-redux'
           <Form.Group>
             <Form.Label>Favorite Animal?</Form.Label>
             <Form.Control type="text" name="animal" value={this.state.animal} />
-          </Form.Group>
+          </Form.Group> */}
 
           {/* <Form.Group>
             <Form.Label>Are you a Night Owl or a Morning Person?</Form.Label>
@@ -92,22 +107,22 @@ import { connect } from 'react-redux'
             <Form.Control type="textarea" name="question2" value={this.state.question2} />
           </Form.Group> */}
 
-          <Form.Group>
+          {/* <Form.Group>
             <Form.Label>Tell me a joke...</Form.Label>
             <Form.Control type="textarea" name="question3" value={this.state.question3} />
-          </Form.Group>
-
-          {/* <Form.Group>
-            <Form.Label>Where is home for you?</Form.Label>
-            <Form.Control type="textarea" name="question4" value={this.state.question4} />
           </Form.Group> */}
 
           <Form.Group>
-            <Form.Label>Pick 5 keywords that you would use to describe yourself:</Form.Label>
-            <Form.Control type="textarea" name="questions5" value={this.state.question5} />
+            <Form.Label>Bio:</Form.Label>
+            <Form.Control type="textarea" name="bio" value={this.state.bio} onChange={this.handleOnChange} />
           </Form.Group>
 
-          <Button type="submit">Submit</Button>
+          {/* <Form.Group>
+            <Form.Label>Pick 5 keywords that you would use to describe yourself:</Form.Label>
+            <Form.Control type="textarea" name="questions5" value={this.state.question5} />
+          </Form.Group> */}
+
+          <Button type="submit">Save</Button>
         </Form>
       </div>
     )

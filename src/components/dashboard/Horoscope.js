@@ -37,7 +37,7 @@ export default class Horoscope extends React.Component {
             <Card.Title>Your Daily Horoscope</Card.Title>
             <Card.Subtitle>Leo</Card.Subtitle>
             <div>
-              <Card.Text>{data.current_date}</Card.Text>
+              {/* <Card.Text>{data.current_date}</Card.Text> */}
               <Card.Text>{data.description}</Card.Text>
               <Card.Text>Mood: {data.mood}</Card.Text>
               <Card.Text>Compatibility: {data.compatibility}</Card.Text>

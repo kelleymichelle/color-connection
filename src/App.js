@@ -86,7 +86,7 @@ class App extends React.Component {
       user: this.props.user
       
     })
-    console.log(this.props)
+    // console.log(this.props)
   }
 
   handleLogout = () => {
