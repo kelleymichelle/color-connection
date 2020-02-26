@@ -5,8 +5,9 @@ import { connect } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 
-import Horoscope from '../components/dashboard/Horoscope'
+// import Horoscope from '../components/dashboard/Horoscope'
 import ColorToken from '../components/dashboard/ColorToken'
+import FetchHoroscope from '../components/FetchHoroscope'
 
 import ImageUploader from '../components/profile/ImageUploader'
 
@@ -14,11 +15,7 @@ class Dashboard extends React.Component {
 
   
   render() {
-    // if (this.props.user.color === null) {
-    //   return (this.props.history.push('/colorquiz'))
-    // }
-    
-    // const user = this.props.currentUser[0]
+  
       const user = this.props.user
       const userProfile = `/user/${user.id}`
       return(
@@ -35,7 +32,8 @@ class Dashboard extends React.Component {
                 View my Profile</Link>
             <Link to="/edit-about-me">Edit my Details</Link>
             <Link to="/color-info">Learn more about Color Tokens</Link>
-            <Horoscope/>
+            {/* <Horoscope zodiac={user.zodiac}/> */}
+            <FetchHoroscope zodiac={user.zodiac}/>
             <ColorToken color={user.color} />
             <ImageUploader user={user}/>
           </div>

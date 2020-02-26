@@ -71,7 +71,7 @@ class ImageUploader extends React.Component {
 
     return (
       <div>
-        <h1>Upload a picture for your personal page here:</h1>
+        <h4>Upload a picture for your personal page here:</h4>
         <form onSubmit={(e)=>this._handleSubmit(e)}>
           <input className="fileInput" 
             type="file" 
