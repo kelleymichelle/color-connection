@@ -12,11 +12,28 @@ export default function ColorToken(props) {
     borderRadius: '50%'
   }
 
+  const colorTokenInfo = color => {
+
+    switch(color) {
+    case "orange":
+      return "Energetic, Spontaneous, Charming"
+    case "blue":
+      return "Empathetic, Compassionate, Cooperative"
+    case "gold":
+      return "Punctual, Organized, Precise"
+    case "green":
+      return "Analytical, Intuitive, Visionary"    
+    default:
+      return "unable to find Color Token info"    
+
+    } 
+  }
+
   const popover = (
     <Popover id="popover-basic">
       <Popover.Title as="h3">{props.color}</Popover.Title>
       <Popover.Content>
-        Some info about color token here.
+        {colorTokenInfo(props.color)}
       </Popover.Content>
     </Popover>
   );
