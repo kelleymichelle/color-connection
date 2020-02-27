@@ -13,3 +13,10 @@ lucky_time: "6am"
               handleLogin={this.handleLogin}
               loggedInStatus={this.state.isLoggedIn} />
             )
+
+hex colors for color tokens:
+
+orange: #fd914c
+gold: #fede58
+blue: #38b6ff
+green: #7dd957

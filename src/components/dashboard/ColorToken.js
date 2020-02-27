@@ -5,8 +5,23 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 
 export default function ColorToken(props) {
 
+  const colorStyle = color => {
+    switch(color) {
+      case "orange":
+        return "#fd914c"
+      case "blue":
+        return "38b6ff"
+      case "gold":
+        return "fede58"
+      case "green":
+        return "7dd957"
+      default:
+        return null        
+    }
+  }
+
   const style = {
-    backgroundColor: `${props.color}`,
+    backgroundColor: `${colorStyle(props.color)}`,
     width: '50px',
     height: '50px',
     borderRadius: '50%'
