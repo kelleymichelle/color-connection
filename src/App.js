@@ -11,7 +11,7 @@ import ColorQuiz from './components/ColorQuiz'
 import Dashboard from './containers/Dashboard'
 import Home from './containers/Home'
 import Login from './components/Login'
-import NavbarLoggedOut from './components/NavbarLoggedOut'
+import UserNavbar from './components/UserNavbar'
 import Profile from './containers/Profile'
 import UserAboutForm from './components/dashboard/UserAboutForm'
 import BrowseUsers from './containers/BrowseUsers'
@@ -104,7 +104,7 @@ class App extends React.Component {
     return (
       <Router>
     
-        <NavbarLoggedOut isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout}/>
+        <UserNavbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout}/>
 
         <Switch>
           <Route exact path="/" component={Home} />

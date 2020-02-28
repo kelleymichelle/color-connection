@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
       const user = this.props.user
       const userProfile = `/user/${user.id}`
       return(
-        <>
+        <div style={{color: '#444444'}}>
           <h1>Welcome, {user.name}</h1>
           <div>
             <Link to=
@@ -31,13 +31,13 @@ class Dashboard extends React.Component {
               }}>
                 View my Profile</Link>
             <Link to="/edit-about-me">Edit my Details</Link>
-            <Link to="/color-info">Learn more about Color Tokens</Link>
-            {/* <Horoscope zodiac={user.zodiac}/> */}
+            
+            
             <FetchHoroscope zodiac={user.zodiac}/>
             <ColorToken color={user.color} />
             <ImageUploader user={user}/>
           </div>
-      </>
+      </div>
     )
   }
 

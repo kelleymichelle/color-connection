@@ -8,7 +8,7 @@ import Logo from './Logo'
 
 import { Link } from 'react-router-dom'
 
-export default function NavbarLoggedOut(props) {
+export default function UserNavbar(props) {
 
   const handleClick = () => {
     axios.delete('http://localhost:3001/logout', {withCredentials: true})
@@ -28,6 +28,7 @@ export default function NavbarLoggedOut(props) {
         <Link id="nav-link" to="/dashboard">My Dashboard</Link>
         <Link id="nav-link" to="/messages">Messages</Link>
         <Link id="nav-link" to="/browse-users">Browse People</Link>
+        <Link id="nav-link" to="/color-info">About Color Tokens</Link>
         <Link id="nav-link" to="/logout" onClick={handleClick}>Log Out</Link>
         <Link id="nav-link" to="/settings">Settings</Link>
       </Nav>

@@ -17,9 +17,20 @@ code {
 
 #nav-link {
   margin-right: 0.75em;
+  font-family: 'Quicksand';
+  color: #444444;
 }
 
 #form {
   margin-left: 20%;
   margin-top: 4%;
+}
+
+h1 {
+  color: #444444;
+  font-family: 'Quicksand';
+}
+
+div {
+  font-family: 'Quicksand';
 }
