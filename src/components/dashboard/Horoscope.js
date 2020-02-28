@@ -15,7 +15,7 @@ export default class Horoscope extends React.Component {
     
     if (data.description) {
       return (
-        <Card style={{ width: '19em', color: '#444444' }}>
+        <Card style={{ width: '33%', color: '#444444' }}>
           <Card.Body id="horoscope">
             <Card.Title><span role="img" aria-label="crystal ball">🔮</span>Your Daily Horoscope</Card.Title>
             <Card.Subtitle>{this.props.zodiac}</Card.Subtitle>
