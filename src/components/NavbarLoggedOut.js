@@ -36,7 +36,8 @@ export default function NavbarLoggedOut(props) {
   }
   return (
     <Navbar id="nabber" className="border-bottom">
-    <Navbar.Brand href="/">Color Connection</Navbar.Brand>
+      <Logo />
+    {/* <Navbar.Brand href="/">Color Connection</Navbar.Brand> */}
         <Nav className="ml auto">
           <Link id="nav-link" to="/signup">Sign Up</Link>
           <Link id="nav-link" to="/login">Log In</Link>

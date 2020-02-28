@@ -10,18 +10,18 @@ export default function ColorToken(props) {
       case "orange":
         return "#fd914c"
       case "blue":
-        return "38b6ff"
+        return "#38b6ff"
       case "gold":
-        return "fede58"
+        return "#fede58"
       case "green":
-        return "7dd957"
+        return "#7dd957"
       default:
-        return null        
+        return color        
     }
   }
 
   const style = {
-    backgroundColor: `${colorStyle(props.color)}`,
+    backgroundColor: colorStyle(props.color),
     width: '50px',
     height: '50px',
     borderRadius: '50%'
