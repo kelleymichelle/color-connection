@@ -1,21 +1,31 @@
 import React from 'react'
 
-export default function AboutColorToken() {
-  const orangeImg = 'https://res.cloudinary.com/color-connection/image/upload/v1582682849/Screen_Shot_2020-02-25_at_12.17.11_PM_l6wori.png'
-  const blueImg = 'https://res.cloudinary.com/color-connection/image/upload/v1582682833/Screen_Shot_2020-02-25_at_12.17.37_PM_kenxrc.png'
-  const greenImg = 'https://res.cloudinary.com/color-connection/image/upload/v1582682844/Screen_Shot_2020-02-25_at_12.17.29_PM_qajrng.png'
-  const goldImg = 'https://res.cloudinary.com/color-connection/image/upload/v1582682835/Screen_Shot_2020-02-25_at_12.17.20_PM_hbbho2.png'
-  
-  // const styles = {
+import Card from 'react-bootstrap/Card'
 
-  // }
+export default function AboutColorTokens() {
+ 
 
   return (
-    <div>
-      <img src={orangeImg} alt="orange color token" />
-      <img src={blueImg} alt="blue color token" />
-      <img src={greenImg} alt="green color token" />
-      <img src={goldImg} alt="gold color token" />
+    <div  style={{marginTop: '3%', marginLeft: '5%', color: '#444444'}}>
+    <h1>Self Image of the Color Tokens</h1>
+    <div style={{margin: '10px'}} className="d-flex flex-wrap">
+      <Card style={{ borderStyle: 'none', margin: '7px', maxWidth: '35%', padding: '10px', backgroundColor: '#fd914c'}}>
+        <h2>Orange</h2>
+        <p>Energetic, spontaneous, and charming. If you’re an Orange, you tend to be action-oriented and are comfortable taking risks. You probably also tend to be competitive and seek out adventures with opportunities to push the boundaries. Living in the moment and enjoying an adaptable time schedule are important to you.</p>
+      </Card>
+      <Card style={{ borderStyle: 'none', margin: '7px', maxWidth: '35%', padding: '10px', backgroundColor: '#7dd957'}}>
+        <h2>Green</h2>
+        <p>Analytical, intuitive, and visionary. These are traits of the Green Personality type. “Greens” find innovative thinking and problem solving exciting. If you’re a Green, you tend to be able to see the big picture and able to effectively analyze situations. Thinking outside the box is a real strength. You also have an extreme need to be right.</p>
+      </Card>
+      <Card style={{ borderStyle: 'none', margin: '7px', maxWidth: '35%', padding: '10px', backgroundColor: '#fede58'}}>
+        <h2>Gold</h2>
+        <p>Punctual, organized, and precise. “Golds” tend to need structure and organization. If you’re a Gold, then order, rules, respect, and dependability are important to you. Time is a key part of your life if you’re a Gold personality type. You need to be on time and want others to be punctual as well. Following the plan or schedule it best for you.</p>
+      </Card>
+      <Card style={{ borderStyle: 'none', margin: '7px', maxWidth: '35%', padding: '10px', backgroundColor: '#38b6ff'}}>
+        <h2>Blue</h2>
+        <p>Empathetic, compassionate, and cooperative. “Blues” tend to be very social people. If you’re a Blue, you value relationships and harmony. Genuine kindness, sincerity, and compassion are important to you. You enjoy opportunities to work with others and collaborate and any opportunity to develop a connection.</p>
+      </Card>
+    </div>
     </div>
   )
 }

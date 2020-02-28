@@ -15,6 +15,7 @@ import NavbarLoggedOut from './components/NavbarLoggedOut'
 import Profile from './containers/Profile'
 import UserAboutForm from './components/dashboard/UserAboutForm'
 import BrowseUsers from './containers/BrowseUsers'
+import AboutColorTokens from './containers/AboutColorTokens'
 // import NavbarLoggedIn from './components/NavbarLoggedIn'
 
 import axios from 'axios'
@@ -136,6 +137,7 @@ class App extends React.Component {
           <Route exact path="/browse-users" component={BrowseUsers} />
           <Route exact path="/edit-about-me" component={UserAboutForm} />
           <Route exact path="/user/:userId" component={Profile} />
+          <Route exact path="/color-info" component={AboutColorTokens} />
         </Switch>
     </Router>
       
