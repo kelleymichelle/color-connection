@@ -12,7 +12,7 @@ import ColorToken from '../components/dashboard/ColorToken'
 import FetchHoroscope from '../components/FetchHoroscope'
 
 import ImageUploader from '../components/profile/ImageUploader'
-// import UserImage from '../components/profile/UserImage'
+import StatusForm from '../components/dashboard/StatusForm'
 
 class Dashboard extends React.Component {
 
@@ -38,12 +38,13 @@ class Dashboard extends React.Component {
         <div style={{color: '#444444'}}>
 
         <div style={{margin: '10px'}} className="d-flex">
-          <h1 style={{marginRight: '10px'}}>{this.userGreeting()}, {user.name}</h1> 
+          <h2 style={{marginRight: '10px'}}>{this.userGreeting()}, {user.name}</h2> 
           <ColorToken color={user.color} />
         </div>
 
         <div style={{margin: '10px', marginBottom: '15px'}}>
-          <h4>User Status</h4>
+          <h5>User Status</h5>
+          <StatusForm />
         </div>
 
         <div className="d-flex">
