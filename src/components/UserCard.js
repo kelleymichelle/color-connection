@@ -25,21 +25,31 @@ export default function UserCard(props) {
 
   const user = props.user
   const userPath = `/user/${user.id}`
+
+  const userCardStyles = {
+    width: '19em', 
+    color: 'white',
+    backgroundColor: colorStyle(user.color), 
+    borderColor: colorStyle(user.color), 
+    borderWidth: '4px', 
+    margin: '10px'
+  }
+
   return (
-    <Link to={{
-      pathname: userPath,
-      state: {
-        user: user
-      }
-    }}>
-      <Card style={{ width: '19em', borderColor: colorStyle(user.color), borderWidth: '4px', margin: '10px' }}>
-        <Card.Body>
-          <Card.Img style={{ width: '80%' }} variant="top" src={user.image} />
-          <Card.Title>{user.name}</Card.Title>
-          <Zodiac zodiac={user.zodiac}/>
-          <Card.Subtitle>{user.location}</Card.Subtitle>
-        </Card.Body>
+    <Card style={userCardStyles}>
+        <Link style={{textDecoration: 'none'}} to={{
+          pathname: userPath,
+          state: {
+            user: user
+          }
+        }}>
+          <Card.Body>
+            <Card.Img style={{ width: '80%' }} variant="top" src={user.image} />
+            <Card.Title>{user.name}</Card.Title>
+            <Zodiac zodiac={user.zodiac}/>
+            <Card.Subtitle>{user.location}</Card.Subtitle>
+          </Card.Body>
+        </Link>
       </Card>
-    </Link>
   )
 }

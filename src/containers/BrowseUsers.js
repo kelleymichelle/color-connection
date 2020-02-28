@@ -27,11 +27,11 @@ export default class BrowseUsers extends React.Component {
   render() {
    
     return (
-      <div>
+      <>
         <h1>Browse Possible Connections</h1>
         {this.state.users.map(u => <UserCard key={u.id} user={u} />
     )}
-      </div>
+      </>
     )
   }
 
