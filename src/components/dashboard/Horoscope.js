@@ -17,7 +17,7 @@ export default class Horoscope extends React.Component {
       return (
         <Card style={{ width: '19em' }}>
           <Card.Body id="horoscope">
-            <Card.Title>Your Daily Horoscope</Card.Title>
+            <Card.Title><span role="img" aria-label="crystal ball">🔮</span>Your Daily Horoscope</Card.Title>
             <Card.Subtitle>{this.props.zodiac}</Card.Subtitle>
             <div>
               {/* <Card.Text>{data.current_date}</Card.Text> */}
