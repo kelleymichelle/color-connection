@@ -37,7 +37,7 @@ export default function UserCard(props) {
 
   return (
     <Card style={userCardStyles}>
-        <Link style={{textDecoration: 'none'}} to={{
+        <Link style={{textDecoration: 'none', color: 'white'}} to={{
           pathname: userPath,
           state: {
             user: user
