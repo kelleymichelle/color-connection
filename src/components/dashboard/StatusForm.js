@@ -3,13 +3,15 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+// import Status from './Status'
+
 import axios from 'axios'
 
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 
-export default class StatusForm extends React.Component {
+class StatusForm extends React.Component {
   state = {
     status: '',
     show: false
@@ -24,6 +26,29 @@ export default class StatusForm extends React.Component {
 
   handleOnSubmit = e => {
     e.preventDefault()
+
+    let userInfo = { status: this.state.status }
+    let user = this.props.user
+
+
+    axios.patch(`http://localhost:3001/users/${user.id}`, {userInfo, user}, {withCredentials: true})
+      .then(response => {
+        if (response.data) {
+          // debugger
+          // const { birthday, gender, location } = response.data
+          this.props.dispatch({ type: 'UPDATE_USER_INFO', payload: response.data })
+          // this.redirect()
+          console.log("after dispatch")
+          this.setState({
+            show: false
+        })
+       } else {
+          this.setState({
+            errors: response.data.errors
+          })
+        }
+      })
+      .catch(error => console.log('api errors:', error))
   }
 
   updateStatus = () => {
@@ -36,11 +61,12 @@ export default class StatusForm extends React.Component {
 
     if (this.state.show) {
     return (
-      <div>
-        <Form>
+      <div style={{width: '80%', margin: '10px'}}> 
+        <Form onSubmit={this.handleOnSubmit} className="d-flex">
           <Form.Group>
             {/* <Form.Label>Update status:</Form.Label> */}
-            <Form.Control 
+            <Form.Control
+              
               type="text" 
               name="status" 
               value={this.state.status} 
@@ -58,3 +84,5 @@ export default class StatusForm extends React.Component {
     }
   }
 }
+
+export default connect()(StatusForm)

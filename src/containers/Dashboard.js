@@ -13,6 +13,7 @@ import FetchHoroscope from '../components/FetchHoroscope'
 
 import ImageUploader from '../components/profile/ImageUploader'
 import StatusForm from '../components/dashboard/StatusForm'
+import Status from '../components/dashboard/Status'
 
 class Dashboard extends React.Component {
 
@@ -43,8 +44,8 @@ class Dashboard extends React.Component {
         </div>
 
         <div style={{margin: '10px', marginBottom: '15px'}}>
-          <h5>User Status</h5>
-          <StatusForm />
+          <Status status={user.status} />
+          <StatusForm user={user} />
         </div>
 
         <div className="d-flex">

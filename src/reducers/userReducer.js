@@ -41,11 +41,12 @@ const userReducer = (state = {
         const location = { location: action.payload.location }
         const bio = { bio: action.payload.bio }
         const zodiac = { zodiac: action.payload.zodiac}
+        const status = { status: action.payload.status }
         // debugger
         // console.log(birthday, gender, location)
         return {
           ...state,
-          currentUser: Object.assign(state.currentUser, birthday, gender, location, zodiac, bio)
+          currentUser: Object.assign(state.currentUser, birthday, gender, location, zodiac, bio, status)
         }
 
       case 'LOGOUT_USER':
