@@ -52,11 +52,13 @@ export default class Profile extends React.Component {
         <Card.Body>
 
           <div className="d-flex flex-row align-items-center">
-            <Card.Title style={{margin: '3px'}}>{user.name} Profile</Card.Title>
+            <Card.Title as="h3" style={{margin: '3px'}}>{user.name} Profile</Card.Title>
             <div style={{margin: '3px'}}><ColorToken color={user.color} /></div>
             <div style={{margin: '3px'}}><Zodiac zodiac={user.zodiac} /></div>
           </div>  
-          
+          <div style={{margin: "8px"}} className="d-flex flex-row align-items-center">
+            <h6 style={{marginRight: "5px"}}>Current Status: </h6> <h5>"{user.status}"</h5>
+          </div>
           <Location location={user.location} />
           <UserBio bio={user.bio} />
           <Gender gender={user.gender} />

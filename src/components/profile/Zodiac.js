@@ -20,40 +20,6 @@ export default function Zodiac(props) {
     Pisces: '♓'
   }
 
-  // const zodiacInfo = sign => {
-  //   switch(sign) {
-  //     case "Aries":
-  //       return ""
-  //     case "Taurus":
-  //       return ""  
-  //     case "Gemini":
-  //       return ""
-  //     case "Cancer":
-  //       return ""
-  //     case "Leo":
-  //       return ""
-  //     case "Virgo":
-  //       return ""
-  //     case "Libra":
-  //       return ""
-  //     case "Scorpio":
-  //       return ""
-  //     case "Sagittarius":
-  //       return ""
-  //     case "Capricorn":
-  //       return ""
-  //     case "Aquarius":
-  //       return ""
-  //     case "Pisces":
-  //       return ""
-  //     default:
-  //       return null      
-
-
-  //   }
-  // }
-
-
   const popover = (
     <Popover id="popover-basic">
       <Popover.Title as="h3">{props.zodiac}</Popover.Title>
