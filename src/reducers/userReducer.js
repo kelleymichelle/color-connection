@@ -1,5 +1,6 @@
 const userReducer = (state = {
   currentUser: [],
+  likes: []
 }, action) => {
 
   
@@ -48,6 +49,14 @@ const userReducer = (state = {
           ...state,
           currentUser: Object.assign(state.currentUser, birthday, gender, location, zodiac, bio, status)
         }
+
+        case 'LIKE_USER':
+          const likedUser = { like: action.payload.user }
+
+          return {
+            ...state,
+            likes: [...state.likes, likedUser]
+          }
 
       case 'LOGOUT_USER':
         // const loggingOutUser = action.payload

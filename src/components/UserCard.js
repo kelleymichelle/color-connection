@@ -53,7 +53,7 @@ export default function UserCard(props) {
               <Zodiac zodiac={user.zodiac}/>
               <Card.Subtitle style={{marginLeft: '10px'}}>{user.location}</Card.Subtitle>
             </div>
-              <LikeButton user={user}/>
+              {/* <LikeButton user={user}/> */}
           </Card.Body>
       </Card>
     </>

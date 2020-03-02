@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
         </div>
 
         <div style={{margin: '10px', marginBottom: '15px'}}>
-          <Status status={user.status} />
+          <Status />
           <StatusForm user={user} />
         </div>
 

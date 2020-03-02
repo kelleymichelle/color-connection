@@ -16,7 +16,6 @@ import Profile from './containers/Profile'
 import UserAboutForm from './components/dashboard/UserAboutForm'
 import BrowseUsers from './containers/BrowseUsers'
 import AboutColorTokens from './containers/AboutColorTokens'
-// import NavbarLoggedIn from './components/NavbarLoggedIn'
 
 import axios from 'axios'
 import { connect } from 'react-redux'
