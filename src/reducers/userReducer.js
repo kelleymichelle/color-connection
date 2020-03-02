@@ -51,12 +51,21 @@ const userReducer = (state = {
         }
 
         case 'LIKE_USER':
-          const likedUser = { like: action.payload.user }
-
+          const likedUser = action.payload
+          console.log(action.payload)
           return {
             ...state,
             likes: [...state.likes, likedUser]
           }
+
+        case 'UNLIKE_USER':
+          const unlikedUser = action.payload
+          const filteredUsers = state.likes.filter(u => u !== unlikedUser)
+          console.log(filteredUsers)
+          return {
+            ...state,
+            likes: [filteredUsers]
+          }  
 
       case 'LOGOUT_USER':
         // const loggingOutUser = action.payload

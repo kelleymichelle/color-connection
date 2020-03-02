@@ -135,7 +135,12 @@ class App extends React.Component {
             )} />
           <Route exact path="/browse-users" component={BrowseUsers} />
           <Route exact path="/edit-about-me" component={UserAboutForm} />
-          <Route exact path="/user/:userId" component={Profile} />
+          <Route exact path="/user/:userId" 
+            render={props => (
+              <Profile {...props}
+              currentUser={this.state.user} />
+            )} 
+            />
           <Route exact path="/color-info" component={AboutColorTokens} />
         </Switch>
     </Router>

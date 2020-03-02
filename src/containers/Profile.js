@@ -5,13 +5,16 @@ import UserBio from '../components/profile/UserBio'
 import Location from '../components/profile/Location'
 import Gender from '../components/profile/Gender'
 // import UserImage from '../components/profile/UserImage'
+import LikeButton from '../components/profile/LikeButton'
+
+import { connect } from 'react-redux'
 
 import axios from 'axios'
 
 import Card from 'react-bootstrap/Card'
 
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
   state = {
     user: []
   }
@@ -37,7 +40,21 @@ export default class Profile extends React.Component {
       })
     })
     .catch(error => console.log(error))
+  }
 
+  handleLikeClick = e => {
+    console.log("clicked")
+    const user = this.state.user.id
+       this.props.dispatch({ type: 'LIKE_USER', payload: user })
+    //   // this.setState({
+    //   //   likes: [...this.state.likes, user]
+    //   // })
+
+  }
+
+  handleUnlikeClick = e => {
+    const user = this.state.user.id
+      this.props.dispatch({ type: 'UNLIKE_USER', payload: user })
   }
 
   render() {
@@ -62,6 +79,8 @@ export default class Profile extends React.Component {
           <Location location={user.location} />
           <UserBio bio={user.bio} />
           <Gender gender={user.gender} />
+          {/* { this.state.user.id === this.props.currentUser.id ? null : <LikeButton user={user}/>} */}
+          <LikeButton user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/>
         </Card.Body>
         
       </Card>
@@ -71,3 +90,7 @@ export default class Profile extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => ({ likes: state.likes })
+
+export default connect(mapStateToProps)(Profile)

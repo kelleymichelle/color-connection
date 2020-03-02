@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 
 import Zodiac from './profile/Zodiac'
-import LikeButton from './profile/LikeButton'
+// import LikeButton from './profile/LikeButton'
 
 export default function UserCard(props) {
 
