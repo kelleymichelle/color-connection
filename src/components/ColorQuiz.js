@@ -73,7 +73,7 @@ class ColorQuiz extends React.Component {
     }
     return (
     
-      <div>
+      <div style={{margin: '20px'}}>
         <h3>Welcome! Please take the Color Quiz to determine your main personality color!</h3>
         <Form id="color-quiz" onSubmit={this.handleSubmit}>
           <Form.Group>

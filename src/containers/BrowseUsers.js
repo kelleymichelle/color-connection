@@ -27,12 +27,18 @@ export default class BrowseUsers extends React.Component {
   render() {
    
     return (
-      <>
+      <div style={{margin: '25px'}}>
         <h1>Browse Possible Connections</h1>
+        <div className="d-flex">
+          <div style={{margin: '5px'}}>Search By</div>
+          <div style={{margin: '5px'}}>Color Token</div>
+          <div style={{margin: '5px'}}>Zodiac</div>
+          <div style={{margin: '5px'}}>Keyword</div>
+        </div>
         <div className="d-flex flex-row flex-wrap">
           {this.state.users.map(u => <UserCard key={u.id} user={u} />)}
         </div>
-      </>
+      </div>
     )
   }
 

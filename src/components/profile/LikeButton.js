@@ -39,11 +39,11 @@ class LikeButton extends React.Component {
 
     if ( likes && likes.includes(user.id)) {
       return (
-        <img onClick={this.props.handleUnlikeClick} style={{ width: '15%', marginTop: '10px'}} src={heart} alt="heart" />
+        <img onClick={this.props.handleUnlikeClick} style={{ width: '5%', marginTop: '10px'}} src={heart} alt="heart" />
       )
     } else {
       return (
-          <img onClick={this.props.handleLikeClick} style={{ width: '15%', marginTop: '10px'}} src={unheart} alt="unheart" />
+          <img onClick={this.props.handleLikeClick} style={{ width: '5%', marginTop: '10px'}} src={unheart} alt="unheart" />
       )
     }
   }
