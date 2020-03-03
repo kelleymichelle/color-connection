@@ -37,7 +37,7 @@ class LikeButton extends React.Component {
     const heart = 'https://res.cloudinary.com/color-connection/image/upload/v1583002402/heart_b794ji.png'
     // const currentUser = this.props.currentUser
 
-    if (likes.includes(user.id)) {
+    if ( likes && likes.includes(user.id)) {
       return (
         <img onClick={this.props.handleUnlikeClick} style={{ width: '15%', marginTop: '10px'}} src={heart} alt="heart" />
       )
