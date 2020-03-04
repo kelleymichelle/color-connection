@@ -16,12 +16,14 @@ const userReducer = (state = {
       }
 
     case 'LOGIN_USER':
-      // const { email, password } = action.payload
-      const user = action.payload
-      // console.log(user)
+      const { user, following, followers } = action.payload
+      // const user = action.payload
+      console.log(action.payload)
     return {
       ...state,
-      currentUser: Object.assign(user)
+      currentUser: Object.assign(user),
+      following: following,
+      followers: followers
     }
 
     case 'UPDATE_USER_COLOR':

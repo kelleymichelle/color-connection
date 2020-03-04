@@ -23,9 +23,8 @@ import { connect } from 'react-redux'
 class App extends React.Component {
   state= {
     isLoggedIn: false,
-    user: {},
-    followers: [],
-    following: []
+    user: {}
+   
   }
 
   componentDidMount() {
@@ -65,12 +64,12 @@ class App extends React.Component {
     const following = obj.data.following || obj.following
     const followers = obj.data.followers || obj.followers
     // debugger
-    this.props.dispatch({ type: 'LOGIN_USER', payload: user})
+    this.props.dispatch({ type: 'LOGIN_USER', payload: { user: user, following: following, followers: followers }})
     this.setState({
       isLoggedIn: true,
-      user: this.props.user,
-      followers: followers,
-      following: following
+      user: this.props.user
+      // followers: followers,
+      // following: following
     })
   }
 
@@ -125,7 +124,9 @@ class App extends React.Component {
           <Route exact path="/dashboard" 
             render={props => (
               <Dashboard {...props}
-                user={this.state.user} />
+                user={this.state.user} 
+                followers={this.props.followers}
+                following={this.props.following}/>
             )} />
           <Route exact path="/colorquiz" 
             render={props => (
@@ -148,6 +149,6 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ user: state.currentUser })
+const mapStateToProps = state => ({ user: state.currentUser, following: state.following, followers: state.followers })
 
 export default connect(mapStateToProps)(App);

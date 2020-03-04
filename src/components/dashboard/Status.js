@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 function Status(props) {
 
   return (
-    <h5>"{props.status}"</h5>
+    props.status ? <h5>"{props.status}"</h5> : null
   )
 }
 
