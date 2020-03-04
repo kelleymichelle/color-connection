@@ -14,6 +14,7 @@ import FetchHoroscope from '../components/FetchHoroscope'
 import ImageUploader from '../components/profile/ImageUploader'
 import StatusForm from '../components/dashboard/StatusForm'
 import Status from '../components/dashboard/Status'
+import Following from '../components/dashboard/Following'
 
 class Dashboard extends React.Component {
 
@@ -66,7 +67,7 @@ class Dashboard extends React.Component {
           
           <Card style={{width: '33%'}}>
               <Card.Title>Your Connections</Card.Title>
-              <div>Click here to view people who have connected with you</div>
+                <div>{this.props.following.map(u => <Following user={u} key={u.id} />)}</div>
           </Card>
 
           <FetchHoroscope zodiac={user.zodiac}/>

@@ -49,7 +49,7 @@ class App extends React.Component {
       if (response.data.logged_in) {
         // debugger
         this.handleLogin(response)
-        console.log(response)
+        // console.log(response)
       } else {
         this.handleLogout()
       }

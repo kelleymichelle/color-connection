@@ -23,7 +23,7 @@ export default class LikeButton extends React.Component {
     const user = this.state.user
     const following = this.state.following
     // debugger
-    console.log(user)
+    // console.log(user)
     const unheart = 'https://res.cloudinary.com/color-connection/image/upload/v1583002402/unheart_nnzhw0.png'
     const heart = 'https://res.cloudinary.com/color-connection/image/upload/v1583002402/heart_b794ji.png'
     // const currentUser = this.props.currentUser
