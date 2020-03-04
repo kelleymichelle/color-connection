@@ -1,6 +1,7 @@
 const userReducer = (state = {
   currentUser: [],
-  likes: []
+  following: [],
+  followers: []
 }, action) => {
 
   
@@ -55,19 +56,19 @@ const userReducer = (state = {
         case 'LIKE_USER':
           const likedUser = action.payload
           console.log(action.payload)
-          const newLikes = state.likes ? [...state.likes, likedUser] : [...likedUser]
+          const newLikes = state.following ? [...state.following, likedUser] : [...likedUser]
           return {
             ...state,
-            likes: newLikes
+            following: newLikes
           }
 
         case 'UNLIKE_USER':
           const unlikedUser = action.payload
-          const filteredUsers = state.likes.filter(u => u !== unlikedUser)
+          const filteredUsers = state.following.filter(u => u !== unlikedUser)
           console.log(filteredUsers)
           return {
             ...state,
-            likes: [filteredUsers]
+            following: [filteredUsers]
           }  
 
       case 'LOGOUT_USER':

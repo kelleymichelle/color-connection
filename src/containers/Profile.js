@@ -48,7 +48,6 @@ class Profile extends React.Component {
     const currentUser = this.props.currentUser.id
     const user = this.state.user
        
-    
        axios.post(`http://localhost:3001/users/${user.id}/follow`, {currentUser},
         {withCredentials: true})
         .then(response => {
@@ -64,8 +63,20 @@ class Profile extends React.Component {
   }
 
   handleUnlikeClick = e => {
-    const user = this.state.user.id
-      this.props.dispatch({ type: 'UNLIKE_USER', payload: user })
+    const currentUser = this.props.currentUser.id
+    const user = this.state.user
+      // this.props.dispatch({ type: 'UNLIKE_USER', payload: user })
+      axios.post(`http://localhost:3001/users/${user.id}/follow`, {currentUser},
+        {withCredentials: true})
+        .then(response => {
+          if (response.data) {
+            this.props.dispatch({ type: 'UNLIKE_USER', payload: user })
+            console.log(response)
+          } else {
+            console.log(response)
+          }
+        })
+        .catch(error => console.log('api errors:', error))
   }
 
   render() {
