@@ -23,7 +23,9 @@ import { connect } from 'react-redux'
 class App extends React.Component {
   state= {
     isLoggedIn: false,
-    user: {}
+    user: {},
+    followers: [],
+    following: []
   }
 
   componentDidMount() {
@@ -46,49 +48,46 @@ class App extends React.Component {
     {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
+        // debugger
         this.handleLogin(response)
+        console.log(response)
       } else {
         this.handleLogout()
       }
     })
     .catch(error => console.log('api errors:', error))
   }
+
   handleLogin = (obj) => {
     // window.location.reload()
     // await obj.user
-    
-    if (obj.user) {
-      const user = obj.user
-      this.keepGoing(user)
-      // this.props.dispatch({ type: 'LOGIN_USER', payload: user})
-    } else if (obj.data.user) {
-      const user = obj.data.user
-      this.keepGoing(user)
-      // this.props.dispatch({ type: 'LOGIN_USER', payload: user})
-    }
+    const user = obj.data.user || obj.data
+    const following = obj.data.following || obj.following
+    const followers = obj.data.followers || obj.followers
     // debugger
-    // this.props.dispatch({ type: 'LOGIN_USER', payload: user})
-    // this.setState({
-    //   isLoggedIn: true
-    //   // user: this.props.currentUser
-      
-    // })
-    // console.log(this.props)
-    // window.location.reload()
-    // debugger
-    // this.history.push("/dashboard")
-    // history.push("/dashboard")
-  }
-
-  keepGoing = user => {
     this.props.dispatch({ type: 'LOGIN_USER', payload: user})
     this.setState({
       isLoggedIn: true,
-      user: this.props.user
-      
+      user: this.props.user,
+      followers: followers,
+      following: following
     })
-    // console.log(this.props)
   }
+
+  // keepGoing = obj => {
+  //   // debugger
+  //   const user = obj.user
+  //   const following = obj.following ? obj.following : null
+  //   const followers = obj.followers ? obj.followers : null
+  //   this.props.dispatch({ type: 'LOGIN_USER', payload: user})
+  //   this.setState({
+  //     isLoggedIn: true,
+  //     user: this.props.user,
+  //     followers: followers,
+  //     following: following
+  //   })
+  //   // console.log(this.props)
+  // }
 
   handleLogout = () => {
     this.props.dispatch({ type: 'LOGOUT_USER', payload: '' })

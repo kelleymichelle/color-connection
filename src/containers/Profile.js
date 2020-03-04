@@ -44,11 +44,22 @@ class Profile extends React.Component {
 
   handleLikeClick = e => {
     console.log("clicked")
+
+    const currentUser = this.props.currentUser.id
     const user = this.state.user.id
        this.props.dispatch({ type: 'LIKE_USER', payload: user })
-    //   // this.setState({
-    //   //   likes: [...this.state.likes, user]
-    //   // })
+    
+       axios.post(`http://localhost:3001/users/${user}/follow`, {currentUser},
+        {withCredentials: true})
+        .then(response => {
+          if (response.data) {
+            
+            console.log(response)
+          } else {
+            console.log(response)
+          }
+        })
+        .catch(error => console.log('api errors:', error))
 
   }
 

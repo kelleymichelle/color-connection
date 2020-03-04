@@ -53,9 +53,10 @@ const userReducer = (state = {
         case 'LIKE_USER':
           const likedUser = action.payload
           console.log(action.payload)
+          const newLikes = state.likes ? [...state.likes, likedUser] : [...likedUser]
           return {
             ...state,
-            likes: [...state.likes, likedUser]
+            likes: newLikes
           }
 
         case 'UNLIKE_USER':
