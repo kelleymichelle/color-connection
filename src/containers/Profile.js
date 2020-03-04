@@ -46,14 +46,14 @@ class Profile extends React.Component {
     console.log("clicked")
 
     const currentUser = this.props.currentUser.id
-    const user = this.state.user.id
-       this.props.dispatch({ type: 'LIKE_USER', payload: user })
+    const user = this.state.user
+       
     
-       axios.post(`http://localhost:3001/users/${user}/follow`, {currentUser},
+       axios.post(`http://localhost:3001/users/${user.id}/follow`, {currentUser},
         {withCredentials: true})
         .then(response => {
           if (response.data) {
-            
+            this.props.dispatch({ type: 'LIKE_USER', payload: user })
             console.log(response)
           } else {
             console.log(response)
@@ -91,7 +91,7 @@ class Profile extends React.Component {
           <UserBio bio={user.bio} />
           <Gender gender={user.gender} />
           {/* { this.state.user.id === this.props.currentUser.id ? null : <LikeButton user={user}/>} */}
-          <LikeButton user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/>
+          <LikeButton following={this.props.following} user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/>
         </Card.Body>
         
       </Card>
@@ -102,6 +102,6 @@ class Profile extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ likes: state.likes })
+const mapStateToProps = state => ({ following: state.following, followers: state.followers })
 
 export default connect(mapStateToProps)(Profile)
