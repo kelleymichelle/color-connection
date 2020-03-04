@@ -19,12 +19,12 @@ const userReducer = (state = {
     case 'LOGIN_USER':
       const { user, following, followers } = action.payload
       // const user = action.payload
-      console.log(action.payload)
+      // console.log(action.payload)
     return {
       ...state,
       currentUser: Object.assign(user),
-      following: following,
-      followers: followers
+      following: [...following],
+      followers: [...followers]
     }
 
     case 'UPDATE_USER_COLOR':
@@ -57,6 +57,7 @@ const userReducer = (state = {
           const likedUser = action.payload
           console.log(action.payload)
           const newLikes = state.following ? [...state.following, likedUser] : [...likedUser]
+          console.log(newLikes)
           return {
             ...state,
             following: newLikes

@@ -39,7 +39,3 @@ export default class LikeButton extends React.Component {
     }
   }
 }
-
-// const mapStateToProps = state => ({ following: state.following })
-
-// export default connect(mapStateToProps)(LikeButton)
