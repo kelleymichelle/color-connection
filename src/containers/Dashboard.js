@@ -57,7 +57,9 @@ class Dashboard extends React.Component {
 
           <Card style={{padding: '10px', width: '33%', marginLeft: '4px'}}>
             
-            <div style={{width: '300px', margin: '10px'}}><img style={{width: '70%'}} src={user.image} alt="user" /></div>
+            <div style={{width: '300px', margin: '10px'}}>
+              { user.image ? <img style={{width: '70%'}} src={user.image} alt="user" /> : null }
+            </div>
             <Link style={{margin: '5px', color: '#444444'}} to=
               {{
                 pathname: userProfile,

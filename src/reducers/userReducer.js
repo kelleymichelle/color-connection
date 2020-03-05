@@ -22,7 +22,7 @@ const userReducer = (state = {
       // console.log(action.payload)
     return {
       ...state,
-      currentUser: Object.assign(user),
+      currentUser: user,
       following: [...following],
       followers: [...followers]
     }
