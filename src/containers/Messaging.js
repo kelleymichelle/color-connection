@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
+import MessageInput from '../components/messaging/MessageInput'
+
 export default class Messaging extends React.Component {
   state = {
     currentUser: '',
@@ -35,7 +37,8 @@ export default class Messaging extends React.Component {
   render() {
     return (
       <div>
-        <h1>Messaging</h1>
+        <h1>Messages with {this.state.friend.name}</h1>
+        <MessageInput />
       </div>
     )
   }
