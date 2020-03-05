@@ -16,6 +16,7 @@ import Profile from './containers/Profile'
 import UserAboutForm from './components/dashboard/UserAboutForm'
 import BrowseUsers from './containers/BrowseUsers'
 import AboutColorTokens from './containers/AboutColorTokens'
+import Messaging from './containers/Messaging'
 
 import axios from 'axios'
 import { connect } from 'react-redux'
@@ -73,21 +74,6 @@ class App extends React.Component {
     })
   }
 
-  // keepGoing = obj => {
-  //   // debugger
-  //   const user = obj.user
-  //   const following = obj.following ? obj.following : null
-  //   const followers = obj.followers ? obj.followers : null
-  //   this.props.dispatch({ type: 'LOGIN_USER', payload: user})
-  //   this.setState({
-  //     isLoggedIn: true,
-  //     user: this.props.user,
-  //     followers: followers,
-  //     following: following
-  //   })
-  //   // console.log(this.props)
-  // }
-
   handleLogout = () => {
     this.props.dispatch({ type: 'LOGOUT_USER', payload: '' })
     this.setState({
@@ -141,6 +127,12 @@ class App extends React.Component {
               currentUser={this.state.user} />
             )} 
             />
+          <Route exact path="/messaging/:userId"
+            render={props => (
+              <Messaging {...props}
+                currentUser={this.state.user} />
+            )}  
+          />
           <Route exact path="/color-info" component={AboutColorTokens} />
         </Switch>
     </Router>

@@ -20,3 +20,9 @@ orange: #fd914c
 gold: #fede58
 blue: #38b6ff
 green: #7dd957
+
+  // const firebaseRef = firebase.databse().ref("firechat")
+    // const chat = new Firechat(firebaseRef)
+    // chat.setUser(user.id, user.name, function(user) {
+    //   chat.resumeSession()
+    // })

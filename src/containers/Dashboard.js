@@ -16,6 +16,10 @@ import StatusForm from '../components/dashboard/StatusForm'
 import Status from '../components/dashboard/Status'
 import Following from '../components/dashboard/Following'
 
+// import Messaging from './Messaging'
+
+// import Chat from '../components/Chat'
+
 class Dashboard extends React.Component {
 
   userGreeting = () => {
@@ -75,6 +79,8 @@ class Dashboard extends React.Component {
         </div>
           
           <ImageUploader user={user}/>
+
+          {/* <Chat user={user} /> */}
           
       </div>
     )
