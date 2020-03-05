@@ -6,7 +6,7 @@ import MessageInput from '../components/messaging/MessageInput'
 export default class Messaging extends React.Component {
   state = {
     currentUser: '',
-    friend: ''
+    recipient: ''
     
   }
 
@@ -15,34 +15,32 @@ export default class Messaging extends React.Component {
     this.fetchUser(userId)
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props !== prevProps) {
-      this.setState({
-        currentUser: this.props.currentUser
-      })
-    }
-  }
-
   fetchUser = id => {
     axios.get(`http://localhost:3001/users/${id}`,
     {withCredentials: true})
     .then(response => {
       console.log(response.data.user)
       this.setState({
-        friend: response.data.user
+        recipient: response.data.user
+       
       })
     })
     .catch(error => console.log(error))
   }
 
+  handleMessageSubmit = data => {
+    console.log(data)
+    const { content, currentUser, recipient } = data
+  }
+
   render() {
     return (
-      <div>
-        <h1>Conversation with {this.state.friend.name}</h1>
+      <div style={{margin: '25px'}}>
+        <h1>Conversation with {this.state.recipient.name}</h1>
         <div>
-          { this.state.conversation ? null : "Send a message to get the ball rolling"}
+          { this.state.conversation ? null : "What are you waiting for? Break the ice!"}
         </div>
-        <MessageInput />
+        <MessageInput handleMessageSubmit={this.handleMessageSubmit} currentUser={this.props.currentUser} recipient={this.state.recipient}/>
       </div>
     )
   }

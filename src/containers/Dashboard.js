@@ -21,6 +21,9 @@ import Following from '../components/dashboard/Following'
 // import Chat from '../components/Chat'
 
 class Dashboard extends React.Component {
+  state = {
+    user: this.props.currentUser
+  }
 
   userGreeting = () => {
     const time = new Date()
@@ -34,10 +37,18 @@ class Dashboard extends React.Component {
       return "Good Evening"
     }
   }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.setState({
+        user: this.props.currentUser
+      })
+    }
+  }
   
   render() {
   
-      const user = this.props.user
+      const user = this.state.user
       const userProfile = `/user/${user.id}`
 
       return(

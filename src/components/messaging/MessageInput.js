@@ -4,25 +4,27 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 import { connect } from 'react-redux'
-import axios from 'axios'
+// import axios from 'axios'
 
 class MessageInput extends React.Component {
   state = {
     content: '',
-    user: ''
+    currentUser: '',
+    recipient: ''
   }
 
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       this.setState({
-        user: this.props.user
+        currentUser: this.props.currentUser,
+        recipient: this.props.recipient
       })
     }
   }
 
   handleSubmit = e => {
     e.preventDefault();
-
+    this.props.handleMessageSubmit(this.state)
   }
 
   handleOnChange = e => {
@@ -33,10 +35,10 @@ class MessageInput extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{margin: '15px'}}>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Control type="textarea" name="content" onChange={this.handleOnChange} placeholder="Type message here..." value={this.state.content}/>
+            <Form.Control style={{width: '75%'}} type="textarea" name="content" onChange={this.handleOnChange} placeholder="Type message here..." value={this.state.content}/>
           </Form.Group>
           <Button type="submit">Send</Button>
         </Form>
