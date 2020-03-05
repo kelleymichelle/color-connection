@@ -61,9 +61,10 @@ class App extends React.Component {
   handleLogin = (obj) => {
     // window.location.reload()
     // await obj.user
-    const user = obj.data.user || obj.data
-    const following = obj.data.following || obj.following
-    const followers = obj.data.followers || obj.followers
+    console.log(obj)
+    const user = obj.user ? obj.user : obj.data.user
+    const following = obj.following ? obj.following : obj.data.following || []
+    const followers = obj.followers ? obj.followers : obj.data.followers || []
     // debugger
     this.props.dispatch({ type: 'LOGIN_USER', payload: { user: user, following: following, followers: followers }})
     this.setState({
@@ -73,6 +74,17 @@ class App extends React.Component {
       // following: following
     })
   }
+
+  // createUserInstance = obj => {
+  //   debugger
+  //   if (obj.data.user) {
+  //     return obj.data.user
+  //   } else if (obj.data) {
+  //     return obj.data
+  //   } else if (obj.user) {
+  //     return obj.user
+  //   }
+  // }
 
   handleLogout = () => {
     this.props.dispatch({ type: 'LOGOUT_USER', payload: '' })

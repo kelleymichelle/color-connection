@@ -7,6 +7,7 @@ export default class Messaging extends React.Component {
   state = {
     currentUser: '',
     friend: ''
+    
   }
 
   componentDidMount() {
@@ -37,7 +38,10 @@ export default class Messaging extends React.Component {
   render() {
     return (
       <div>
-        <h1>Messages with {this.state.friend.name}</h1>
+        <h1>Conversation with {this.state.friend.name}</h1>
+        <div>
+          { this.state.conversation ? null : "Send a message to get the ball rolling"}
+        </div>
         <MessageInput />
       </div>
     )

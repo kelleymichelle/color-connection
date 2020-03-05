@@ -20,12 +20,23 @@ class MessageInput extends React.Component {
     }
   }
 
+  handleSubmit = e => {
+    e.preventDefault();
+
+  }
+
+  handleOnChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   render() {
     return (
       <div>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Control type="textarea" name="content" placeholder="Type message here..." value={this.state.content}/>
+            <Form.Control type="textarea" name="content" onChange={this.handleOnChange} placeholder="Type message here..." value={this.state.content}/>
           </Form.Group>
           <Button type="submit">Send</Button>
         </Form>
