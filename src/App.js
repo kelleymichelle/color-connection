@@ -63,6 +63,7 @@ class App extends React.Component {
     // await obj.user
     console.log(obj)
     const user = obj.user ? obj.user : obj.data.user
+    // const user = (((obj || {}).user || {}).data || {})
     const following = obj.following ? obj.following : obj.data.following || []
     const followers = obj.followers ? obj.followers : obj.data.followers || []
     // debugger
