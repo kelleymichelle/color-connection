@@ -30,7 +30,14 @@ export default class Messaging extends React.Component {
 
   handleMessageSubmit = data => {
     console.log(data)
-    const { content, currentUser, recipient } = data
+    const { recipient } = data
+
+    axios.post(`http://localhost:3001/messages/${recipient.id}/new`, { data },
+      {withCredentials: true})
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
+
+      //need to connect component to store and dispatch conversation to store
   }
 
   render() {
