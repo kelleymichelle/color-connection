@@ -86,7 +86,7 @@ class Profile extends React.Component {
     return (
       <Card className="d-flex flex-row flex-wrap" style={{padding: '2em'}}>
         
-        <Card.Img variant="left" style={{width: '25%'}} src={user.image} alt="user" />
+        { user.image ? <Card.Img variant="left" style={{width: '25%'}} src={user.image} alt="user" /> : null }
        
         <Card.Body>
 
@@ -96,7 +96,7 @@ class Profile extends React.Component {
             <div style={{margin: '3px'}}><Zodiac zodiac={user.zodiac} /></div>
           </div>  
           <div style={{margin: "8px"}} className="d-flex flex-row align-items-center">
-            <h6 style={{marginRight: "5px"}}>Current Status: </h6> <h5>"{user.status}"</h5>
+             { user.status ? <> <h6 style={{marginRight: "5px"}}>Current Status: </h6> <h5>"{user.status}"</h5> </> : null }
           </div>
           <Location location={user.location} />
           <UserBio bio={user.bio} />
