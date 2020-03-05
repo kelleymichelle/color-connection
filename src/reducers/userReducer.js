@@ -46,11 +46,12 @@ const userReducer = (state = {
         const bio = { bio: action.payload.bio }
         const zodiac = { zodiac: action.payload.zodiac}
         const status = { status: action.payload.status }
+        const image = { image: action.payload.image }
         // debugger
         // console.log(birthday, gender, location)
         return {
           ...state,
-          currentUser: Object.assign(state.currentUser, birthday, gender, location, zodiac, bio, status)
+          currentUser: Object.assign(state.currentUser, birthday, gender, location, zodiac, bio, status, image)
         }
 
         case 'LIKE_USER':

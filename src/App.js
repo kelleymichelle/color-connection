@@ -76,17 +76,6 @@ class App extends React.Component {
     })
   }
 
-  // createUserInstance = obj => {
-  //   debugger
-  //   if (obj.data.user) {
-  //     return obj.data.user
-  //   } else if (obj.data) {
-  //     return obj.data
-  //   } else if (obj.user) {
-  //     return obj.user
-  //   }
-  // }
-
   handleLogout = () => {
     this.props.dispatch({ type: 'LOGOUT_USER', payload: '' })
     this.setState({
