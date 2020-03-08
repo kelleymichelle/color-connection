@@ -1,27 +1,35 @@
 import React from 'react'
 import axios from 'axios'
 
+import { connect } from 'react-redux'
+
 import MessageInput from '../components/messaging/MessageInput'
 
-export default class Messaging extends React.Component {
+class Messaging extends React.Component {
   state = {
     currentUser: '',
-    recipient: ''
+    recipient: '',
+    conversation: []
     
   }
 
-  componentDidMount() {
-    const userId = this.props.match.params.userId
-    this.fetchUser(userId)
+  componentDidUpdate(prevProps) {
+    if (this.props.currentUser !== prevProps.currentUser) {
+      const userId = this.props.match.params.userId
+      this.fetchUser(userId)
+    }
   }
 
   fetchUser = id => {
-    axios.get(`http://localhost:3001/users/${id}`,
+    const currentUser = this.props.currentUser.id
+    axios.get(`http://localhost:3001/users/${id}`, { params: { currentUser } } ,
     {withCredentials: true})
     .then(response => {
+      // debugger
       console.log(response.data.user)
       this.setState({
-        recipient: response.data.user
+        recipient: response.data.user,
+        conversation: response.data.conversation || []
        
       })
     })
@@ -34,9 +42,16 @@ export default class Messaging extends React.Component {
 
     axios.post(`http://localhost:3001/messages/${recipient.id}/new`, { data },
       {withCredentials: true})
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
+      .then(response => {
+        if (response.data.conversation) {
+          // console.log(response)
+          const convo = response.data.conversation
+          this.props.dispatch({ type: 'LOAD_CONVERSATION', payload: convo })
+      }
+    })
+      // .catch(error => console.log(error))
 
+      
       //need to connect component to store and dispatch conversation to store
   }
 
@@ -52,3 +67,5 @@ export default class Messaging extends React.Component {
     )
   }
 }
+
+export default connect()(Messaging)

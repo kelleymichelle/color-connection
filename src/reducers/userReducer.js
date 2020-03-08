@@ -54,6 +54,14 @@ const userReducer = (state = {
           currentUser: Object.assign(state.currentUser, birthday, gender, location, zodiac, bio, status, image)
         }
 
+        case 'LOAD_CONVERSATION':
+          // debugger
+          const convo = [...action.payload]
+          return {
+            ...state,
+            conversation: convo
+          }
+
         case 'LIKE_USER':
           const likedUser = action.payload
           console.log(action.payload)
