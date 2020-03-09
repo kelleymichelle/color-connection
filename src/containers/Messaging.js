@@ -16,7 +16,7 @@ class Messaging extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.currentUser !== prevProps.currentUser) {
+    if (this.props.currentUser !== prevProps.currentUser || this.state.currentUser === '') {
       const userId = this.props.match.params.userId
       this.fetchUser(userId)
     }
@@ -31,7 +31,8 @@ class Messaging extends React.Component {
       // console.log(response.data.user)
       this.setState({
         recipient: response.data.user,
-        conversation: response.data.conversation || []
+        conversation: response.data.conversation || [],
+        currentUser: this.props.currentUser
        
       })
     })

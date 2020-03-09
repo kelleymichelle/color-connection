@@ -3,6 +3,8 @@ import React from 'react'
 import axios from 'axios'
 import moment from 'moment'
 
+import Card from 'react-bootstrap/Card'
+
 export default class Message extends React.Component {
 
   state = {
@@ -30,13 +32,20 @@ export default class Message extends React.Component {
     const time = moment(this.props.content.created_at).format('LLLL')
     // console.log(time)
     return (
-
       <div>
-        <p>From: {this.state.sender.name}</p>
-        <p>{content}</p>
-        <p>{ time }</p>
+        <Card>
+        <div className="d-flex">
+          <div style={{maxWidth: '80px', margin: '10px'}}>
+          <img style={{width: '100%'}} src={this.state.sender.image} alt={this.state.sender.name}/>
+          </div>
+          <Card.Body>
+            <Card.Text>From: {this.state.sender.name}</Card.Text>
+            <Card.Title>{content}</Card.Title>
+          </Card.Body>
+          </div>
+            <Card.Footer>sent { time }</Card.Footer>
+        </Card>
       </div>
-
     )
   }
 }

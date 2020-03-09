@@ -91,7 +91,7 @@ class Profile extends React.Component {
         <Card.Body>
 
           <div className="d-flex flex-row align-items-center">
-            <Card.Title as="h3" style={{margin: '3px'}}>{user.name} Profile</Card.Title>
+            <Card.Title as="h3" style={{margin: '3px'}}>{user.name}</Card.Title>
             <div style={{margin: '3px'}}><ColorToken color={user.color} /></div>
             <div style={{margin: '3px'}}><Zodiac zodiac={user.zodiac} /></div>
           </div>  
