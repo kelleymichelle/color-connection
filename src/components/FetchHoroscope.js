@@ -7,7 +7,7 @@ export default class FetchHoroscope extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.zodiac !== prevProps.zodiac && this.props.zodiac !== null) {
+    if (this.props.zodiac !== prevProps.zodiac || this.state.data === []) {
       const sign = (this.props.zodiac).toLowerCase()
       // console.log(sign)
       // const sign = "leo"
