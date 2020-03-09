@@ -32,7 +32,7 @@ export default class Message extends React.Component {
     const time = moment(this.props.content.created_at).format('LLLL')
     // console.log(time)
     return (
-      <div>
+      <div style={{width: '70%'}}>
         <Card>
         <div className="d-flex">
           <div style={{maxWidth: '80px', margin: '10px'}}>

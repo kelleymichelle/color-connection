@@ -9,26 +9,35 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
  class UserAboutForm extends React.Component {
-  //  constructor(props) {
-  //    super(props)
-  //    this.state = {
-  //      birthday: props.user.birthday,
-  //      gender: `${props.user.gender}`,
-  //      location: props.user.location,
-  //      redirect: ''
-  //    }
-  //  }
-  state = {
-    birthday: '',
-    gender: '',
-    location: '',
-    bio: '',
-    redirect: ''
-  }
+   constructor(props) {
+     super(props)
+     this.state = {
+       birthday: props.user.birthday,
+       gender: props.user.gender,
+       location: props.user.location,
+       redirect: '',
+       animal: ''
+     }
+   }
+  // state = {
+  //   birthday: '',
+  //   gender: '',
+  //   location: '',
+  //   bio: '',
+  //   redirect: ''
+  // }
 
   handleOnChange = e => {
     this.setState({
       [e.target.name]: e.target.value
+    })
+  }
+
+  handleAnimalClick = e => {
+    // console.log(e.target.innerText)
+    const animal = e.target.innerText
+    this.setState({
+      animal: animal
     })
   }
 
@@ -57,6 +66,8 @@ import { connect } from 'react-redux'
       .catch(error => console.log('api errors:', error))
   }
 
+ 
+
   render() {
     
     if (this.state.redirect) {
@@ -82,20 +93,19 @@ import { connect } from 'react-redux'
             <Form.Control type="text" name="location" value={this.state.location} onChange={this.handleOnChange} placeholder={this.props.user.location}/>
           </Form.Group>
 
-          {/* <Form.Group>
-            <Form.Label>Favorite Quote</Form.Label>
-            <Form.Control type="text" name="quote" value={this.state.quote} />
-          </Form.Group> */}
+          <Form.Group>
+            <Form.Label>Cat person or Dog person?</Form.Label>
 
-          {/* <Form.Group>
-            <Form.Label>Signature drink?</Form.Label>
-            <Form.Control type="text" name="drink" value={this.state.drink} placeholder="Shaken or stirred..."/>
+              <p value="cats" name="cats" onClick={this.handleAnimalClick}>Cats</p>
+
+              <p value="dogs" name="dogs" onClick={this.handleAnimalClick}>Dogs</p>
+
           </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Favorite Animal?</Form.Label>
-            <Form.Control type="text" name="animal" value={this.state.animal} />
-          </Form.Group> */}
+          {/* // <Form.Group>
+          //   <Form.Label>Favorite Animal?</Form.Label>
+          //   <Form.Control type="text" name="animal" value={this.state.animal} />
+          // </Form.Group> */}
 
           {/* <Form.Group>
             <Form.Label>Are you a Night Owl or a Morning Person?</Form.Label>
@@ -117,10 +127,10 @@ import { connect } from 'react-redux'
             <Form.Control type="textarea" name="bio" value={this.state.bio} onChange={this.handleOnChange} />
           </Form.Group>
 
-          {/* <Form.Group>
+          <Form.Group>
             <Form.Label>Pick 5 keywords that you would use to describe yourself:</Form.Label>
             <Form.Control type="textarea" name="questions5" value={this.state.question5} />
-          </Form.Group> */}
+          </Form.Group>
 
           <Button type="submit">Save</Button>
         </Form>

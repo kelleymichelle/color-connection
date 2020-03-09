@@ -87,7 +87,7 @@ class Dashboard extends React.Component {
                 <div>{this.props.following.map(u => <Following user={u} key={u.id} />)}</div>
           </Card>
 
-          <FetchHoroscope zodiac={user.zodiac}/>
+          { user.zodiac !== '' ? <FetchHoroscope zodiac={user.zodiac}/> : null }
         
         </div>
           

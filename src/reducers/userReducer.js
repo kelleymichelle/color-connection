@@ -47,11 +47,12 @@ const userReducer = (state = {
         const zodiac = { zodiac: action.payload.zodiac}
         const status = { status: action.payload.status }
         const image = { image: action.payload.image }
+        const animal = { animal: action.payload.animal }
         // debugger
         // console.log(birthday, gender, location)
         return {
           ...state,
-          currentUser: Object.assign(state.currentUser, birthday, gender, location, zodiac, bio, status, image)
+          currentUser: Object.assign(state.currentUser, birthday, gender, location, zodiac, bio, status, image, animal)
         }
 
         case 'LOAD_CONVERSATION':

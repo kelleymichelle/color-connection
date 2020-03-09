@@ -3,7 +3,16 @@ import Horoscope from './dashboard/Horoscope'
 
 export default class FetchHoroscope extends React.Component {
   state = {
-    data: []
+    data: [],
+    zodiac: ''
+  }
+
+  componentDidMount() {
+    if (this.props.zodiac) {
+      this.setState({
+        zodiac: this.props.zodiac
+      })
+    }
   }
 
   componentDidUpdate(prevProps) {
