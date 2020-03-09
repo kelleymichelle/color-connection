@@ -15,8 +15,8 @@ import { connect } from 'react-redux'
        birthday: props.user.birthday,
        gender: props.user.gender,
        location: props.user.location,
-       redirect: '',
-       animal: ''
+       redirect: ''
+       
      }
    }
   // state = {

@@ -17,6 +17,7 @@ import UserAboutForm from './components/dashboard/UserAboutForm'
 import BrowseUsers from './containers/BrowseUsers'
 import AboutColorTokens from './containers/AboutColorTokens'
 import Messaging from './containers/Messaging'
+import Inbox from './containers/Inbox'
 
 import axios from 'axios'
 import { connect } from 'react-redux'
@@ -136,6 +137,12 @@ class App extends React.Component {
             )}  
           />
           <Route exact path="/color-info" component={AboutColorTokens} />
+          <Route exact path="/messages" 
+            render={props => (
+              <Inbox {...props}
+              currentUser={this.state.user} />
+            )} 
+            />
         </Switch>
     </Router>
       
