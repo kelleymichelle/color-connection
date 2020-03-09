@@ -3,6 +3,8 @@ import axios from 'axios'
 
 import { connect } from 'react-redux'
 
+import Message from '../components/messaging/Message'
+
 import MessageInput from '../components/messaging/MessageInput'
 
 class Messaging extends React.Component {
@@ -26,7 +28,7 @@ class Messaging extends React.Component {
     {withCredentials: true})
     .then(response => {
       // debugger
-      console.log(response.data.user)
+      // console.log(response.data.user)
       this.setState({
         recipient: response.data.user,
         conversation: response.data.conversation || []
@@ -37,7 +39,7 @@ class Messaging extends React.Component {
   }
 
   handleMessageSubmit = data => {
-    console.log(data)
+    // console.log(data)
     const { recipient } = data
 
     axios.post(`http://localhost:3001/messages/${recipient.id}/new`, { data },
@@ -47,6 +49,9 @@ class Messaging extends React.Component {
           // console.log(response)
           const convo = response.data.conversation
           this.props.dispatch({ type: 'LOAD_CONVERSATION', payload: convo })
+          this.setState({
+            conversation: convo
+          })
       }
     })
       // .catch(error => console.log(error))
@@ -60,7 +65,7 @@ class Messaging extends React.Component {
       <div style={{margin: '25px'}}>
         <h1>Conversation with {this.state.recipient.name}</h1>
         <div>
-          { this.state.conversation ? null : "What are you waiting for? Break the ice!"}
+          { this.state.conversation ? this.state.conversation.map(m => <Message key={m.id} content={m} /> ) : "What are you waiting for? Break the ice!"}
         </div>
         <MessageInput handleMessageSubmit={this.handleMessageSubmit} currentUser={this.props.currentUser} recipient={this.state.recipient}/>
       </div>

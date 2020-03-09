@@ -25,6 +25,9 @@ class MessageInput extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.handleMessageSubmit(this.state)
+    this.setState({
+      content: ''
+    })
   }
 
   handleOnChange = e => {
