@@ -50,8 +50,8 @@ export default class Inbox extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Inbox</h1>
+      <div style={{margin: '1%'}}>
+        <h1 style={{margin: '2%'}}>Inbox</h1>
         { this.state.fetched === true ? null : this.fetchInbox() }
         <div>{ this.state.conversations.map(c => <Conversation  key={c[0].id} currentUser={this.state.currentUser} convo={c} /> ) }</div>
       </div>
