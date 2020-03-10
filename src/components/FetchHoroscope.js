@@ -7,8 +7,13 @@ export default class FetchHoroscope extends React.Component {
     zodiac: ''
   }
 
-  componentDidMount() {
-    if (this.props.zodiac) {
+  async componentDidMount() {
+    await this.setZodiac(this.props)
+    this.fetchData(this.state.zodiac)
+  }
+
+  setZodiac = props => {
+    if (props.zodiac) {
       this.setState({
         zodiac: this.props.zodiac
       })
@@ -16,12 +21,15 @@ export default class FetchHoroscope extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.zodiac !== prevProps.zodiac || this.state.data === []) {
-      const sign = (this.props.zodiac).toLowerCase()
-      // console.log(sign)
-      // const sign = "leo"
-      // const sign = this.props.zodiac
-      const horoscopeURL = `https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign=${sign}&day=today`
+    if ((this.props.zodiac !== prevProps.zodiac) || (this.state.data === [])) {
+      const sign = this.props.zodiac ? (this.props.zodiac).toLowerCase() : null
+      this.fetchData(sign)
+    
+    }
+  }
+
+  fetchData = (sign) => {
+    const horoscopeURL = `https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign=${sign}&day=today`
       fetch(horoscopeURL, {
         "method": "POST",
         "headers": {
@@ -40,7 +48,7 @@ export default class FetchHoroscope extends React.Component {
       .catch(err => {
         console.log(err);
       });
-    }
+    
   }
 
   render() {
