@@ -16,6 +16,7 @@ import StatusForm from '../components/dashboard/StatusForm'
 import Status from '../components/dashboard/Status'
 import Following from '../components/dashboard/Following'
 import NewUserAlerts from '../components/dashboard/NewUserAlerts'
+import SuggestedConnections from '../components/dashboard/SuggestedConnections'
 
 // import Messaging from './Messaging'
 
@@ -62,7 +63,16 @@ class Dashboard extends React.Component {
           { user.newUser ? <NewUserAlerts color={user.color} toggleNewUserStatus={this.toggleNewUserStatus}/> : null }
         <div style={{margin: '10px'}} className="d-flex">
           <h2 style={{marginRight: '10px'}}>{this.userGreeting()}, {user.name}</h2> 
-          <ColorToken color={user.color} />
+          { user.color ? <ColorToken color={user.color} /> : 
+            <Link style={{margin: '5px', color: '#444444'}} to=
+              {{
+                pathname: "/colorquiz",
+                state: {
+                  user: user
+                }
+              }}>
+                Take Color Quiz to recieve Color Token!
+            </Link> }
         </div>
 
         <div style={{margin: '10px', marginBottom: '15px'}}>
@@ -99,7 +109,7 @@ class Dashboard extends React.Component {
           
           <ImageUploader user={user}/>
 
-          {/* <Chat user={user} /> */}
+          <SuggestedConnections />
           
       </div>
     )

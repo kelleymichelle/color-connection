@@ -53,13 +53,15 @@ export default function ColorToken(props) {
     </Popover>
   );
 
+  
   return (
+    
     <OverlayTrigger trigger="click" placement="right" overlay={popover}>
       <div style={style}>
-
       </div>
     </OverlayTrigger>
-
+    
   )
+  
 
 }
