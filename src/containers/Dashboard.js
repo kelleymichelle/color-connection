@@ -15,6 +15,7 @@ import ImageUploader from '../components/profile/ImageUploader'
 import StatusForm from '../components/dashboard/StatusForm'
 import Status from '../components/dashboard/Status'
 import Following from '../components/dashboard/Following'
+import NewUserAlerts from '../components/dashboard/NewUserAlerts'
 
 // import Messaging from './Messaging'
 
@@ -53,7 +54,8 @@ class Dashboard extends React.Component {
 
       return(
         <div style={{color: '#444444'}}>
-
+          {/* <NewUserAlerts /> */}
+          { user.newUser ? <NewUserAlerts /> : null }
         <div style={{margin: '10px'}} className="d-flex">
           <h2 style={{marginRight: '10px'}}>{this.userGreeting()}, {user.name}</h2> 
           <ColorToken color={user.color} />

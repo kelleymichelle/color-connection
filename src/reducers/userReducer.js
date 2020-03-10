@@ -13,7 +13,8 @@ const userReducer = (state = {
       // console.log(newUser)
       return {
         ...state,
-        currentUser: Object.assign(newUser)
+        currentUser: Object.assign(newUser),
+        newUser: true
       }
 
     case 'LOGIN_USER':
