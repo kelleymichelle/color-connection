@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
 
       return(
         <div style={{color: '#444444'}}>
-          {/* <NewUserAlerts /> */}
+          <NewUserAlerts />
           { user.newUser ? <NewUserAlerts /> : null }
         <div style={{margin: '10px'}} className="d-flex">
           <h2 style={{marginRight: '10px'}}>{this.userGreeting()}, {user.name}</h2> 

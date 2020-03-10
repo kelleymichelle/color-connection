@@ -15,6 +15,13 @@ class Messaging extends React.Component {
     
   }
 
+  componentDidMount() {
+    if (this.props.currentUser) {
+      const userId = this.props.currentUser.id
+      this.fetchUser(userId)
+    }
+  }
+
   componentDidUpdate(prevProps) {
     if ( (this.props.currentUser !== prevProps.currentUser) || (this.state.currentUser && this.state.conversation === []) ) {
       const userId = this.props.match.params.userId
