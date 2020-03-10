@@ -46,6 +46,10 @@ class Dashboard extends React.Component {
       })
     }
   }
+
+  toggleNewUserStatus = () => {
+    this.props.dispatch({ type: 'TOGGLE_NEW_USER_STATUS', payload: false })
+  }
   
   render() {
   
@@ -54,8 +58,8 @@ class Dashboard extends React.Component {
 
       return(
         <div style={{color: '#444444'}}>
-          <NewUserAlerts />
-          { user.newUser ? <NewUserAlerts /> : null }
+          {/* <NewUserAlerts color={user.color} toggleNewUserStatus={this.toggleNewUserStatus}/> */}
+          { user.newUser ? <NewUserAlerts color={user.color} toggleNewUserStatus={this.toggleNewUserStatus}/> : null }
         <div style={{margin: '10px'}} className="d-flex">
           <h2 style={{marginRight: '10px'}}>{this.userGreeting()}, {user.name}</h2> 
           <ColorToken color={user.color} />

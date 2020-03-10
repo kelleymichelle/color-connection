@@ -7,8 +7,8 @@ export default class FetchHoroscope extends React.Component {
     zodiac: ''
   }
 
-  async componentDidMount() {
-    await this.setZodiac(this.props)
+  componentDidMount() {
+    this.setZodiac(this.props)
     this.fetchData(this.state.zodiac)
   }
 

@@ -17,6 +17,13 @@ const userReducer = (state = {
         newUser: true
       }
 
+    case 'TOGGLE_NEW_USER_STATUS':
+      const toggler = action.payload
+      return {
+        ...state,
+        newUser: toggler
+      }  
+
     case 'LOGIN_USER':
       const { user, following, followers } = action.payload
       // const user = action.payload
