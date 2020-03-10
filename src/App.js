@@ -19,6 +19,8 @@ import AboutColorTokens from './containers/AboutColorTokens'
 import Messaging from './containers/Messaging'
 import Inbox from './containers/Inbox'
 
+import Notifications from './components/dashboard/Notifications'
+
 import axios from 'axios'
 import { connect } from 'react-redux'
 
@@ -62,7 +64,7 @@ class App extends React.Component {
   handleLogin = (obj) => {
     // window.location.reload()
     // await obj.user
-    console.log(obj)
+    // console.log(obj)
     const user = obj.user ? obj.user : obj.data.user
     // const user = (((obj || {}).user || {}).data || {})
     const following = obj.following ? obj.following : obj.data.following || []
@@ -90,8 +92,8 @@ class App extends React.Component {
     return (
       <Router>
     
+        <Notifications currentUser={this.state.user} />
         <UserNavbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout}/>
-
         <Switch>
           <Route exact path="/" component={Home} />
           <Route 

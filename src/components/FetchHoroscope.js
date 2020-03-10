@@ -52,18 +52,22 @@ export default class FetchHoroscope extends React.Component {
           console.log(err);
         });
     }
+    return null
   }
 
   render() {
   
-    if ( this.state.data !== [] ) {
-    return(
-      <Horoscope data={this.state.data} zodiac={this.props.zodiac}/>
-    )
+
+    if ( this.state.data.length !== 0 ) {
+      return(
+        <Horoscope data={this.state.data} zodiac={this.props.zodiac}/>
+      )
     } else if ( !this.state.completed ) {
       return (
-        this.fetchData(this.state.zodiac)
-      )
+        this.fetchData(this.props.zodiac)
+      ) 
+    } else {
+        return (null)
     }
   }
   
