@@ -54,11 +54,11 @@ export default class FetchHoroscope extends React.Component {
 
   render() {
   
-    if (this.state.data) {
+    if (this.state.data !== []) {
     return(
       <Horoscope data={this.state.data} zodiac={this.props.zodiac}/>
     )
-    } else if ( this.state.zodiac && this.state.data === []) {
+    } else if ( this.state.zodiac && this.state.data === [] ) {
       return (
         this.fetchData(this.state.zodiac)
       )
