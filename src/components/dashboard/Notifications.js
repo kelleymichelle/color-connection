@@ -1,9 +1,10 @@
 import React from 'react'
 
 import axios from 'axios'
-import { render } from '@testing-library/react'
 
 // import Toast from 'react-bootstrap/Toast'
+import Notify from './Notify'
+// import { render } from '@testing-library/react'
 
 export default class Notifications extends React.Component {
 
@@ -35,6 +36,7 @@ export default class Notifications extends React.Component {
     axios.get(`http://localhost:3001/users/${user.id}/notifications`, {withCredentials: true})
       .then(response => {
         if (response.data.notifications) {
+          console.log("notifications fetched")
           this.setState({
             notifications: response.data.notifications
           })
@@ -43,10 +45,32 @@ export default class Notifications extends React.Component {
       .catch(error => console.log(error))
       }
   }
+
+  // closeToast = e => {
+  //   console.log("toastie clicked")
+  //   console.log(e.target)
+  // }
+
+  parseNotifications = () => {
+    return this.state.notifications.map(note => {
+      return (
+        <Notify note={note} />
+      )
+    })
+  }
   
   render() {
     return (
-      null
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        zIndex: 10,
+        marginTop: '2%',
+        marginRight: '1%'
+      }}>
+        { this.parseNotifications() }
+      </div>
     )
   }
 }

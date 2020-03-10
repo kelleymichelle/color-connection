@@ -37,7 +37,8 @@ export default class FetchHoroscope extends React.Component {
           "headers": {
             "x-rapidapi-host": "sameer-kumar-aztro-v1.p.rapidapi.com",
             "x-rapidapi-key": "c3ef217e69msh026e456e9121fbdp1cde79jsn3daf9d88f670",
-            "content-type": "application/x-www-form-urlencoded"
+            "content-type": "application/x-www-form-urlencoded",
+            "mode": "no-cors"
           },
           "body": {}
         })
