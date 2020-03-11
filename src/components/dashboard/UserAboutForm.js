@@ -78,7 +78,7 @@ import { connect } from 'react-redux'
     }
     return (
       
-      <div>
+      <div style={{margin: '3%'}}>
         <h2>Edit your personal details</h2>
         <Form style={{width: '35em'}} onSubmit={this.handleOnSubmit}>
           <Form.Group>

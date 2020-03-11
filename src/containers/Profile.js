@@ -1,6 +1,7 @@
 import React from 'react'
 import ColorToken from '../components/dashboard/ColorToken'
 import Zodiac from '../components/profile/Zodiac'
+import AnimalIcon from '../components/profile/AnimalIcon'
 import UserBio from '../components/profile/UserBio'
 import Location from '../components/profile/Location'
 import Gender from '../components/profile/Gender'
@@ -101,6 +102,7 @@ class Profile extends React.Component {
           <Location location={user.location} />
           <UserBio bio={user.bio} />
           <Gender gender={user.gender} />
+          <div><AnimalIcon animal={user.animal} /></div>
           {/* { user.id === this.props.currentUser.id ? null : <LikeButton following={this.props.following} user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/> } */}
           <LikeButton currentUser={this.props.currentUser} following={this.props.following} user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/>
         </Card.Body>

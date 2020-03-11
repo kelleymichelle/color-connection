@@ -9,7 +9,12 @@ export default function Following(props) {
     <div className="d-flex align-items-center" style={{margin: '10px'}}>
       <img style={{width: '25%', border: '3px solid', borderColor: user.color }}src={user.image} alt={user.name}/>
       <p style={{size: "20px", margin: '5px'}}>{user.name}</p>
-      <Link to={userPath} style={{textDecoration: 'none'}}>
+      <Link to={{
+            pathname: userPath,
+              state: {
+                recipient: user
+              }
+          }} style={{textDecoration: 'none'}}>
         <span style={{ fontSize: '35px', margin: '5px'}} role="img" aria-label="envelope">✉️</span>
       </Link>
     </div>
