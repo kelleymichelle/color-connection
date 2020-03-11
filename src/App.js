@@ -2,8 +2,6 @@ import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Navbar from 'react-bootstrap/Navbar'
-// import Nav from 'react-bootstrap/Nav'
 import { Redirect } from 'react-router-dom'
 
 import SignUp from './components/SignUp'

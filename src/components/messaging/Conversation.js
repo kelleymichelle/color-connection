@@ -2,6 +2,7 @@ import React from 'react'
 
 import axios from 'axios'
 import Card from 'react-bootstrap/Card'
+import { Link } from 'react-router-dom'
 
 export default class Conversation extends React.Component {
 
@@ -42,7 +43,13 @@ export default class Conversation extends React.Component {
           <div style={{width: '70px', marginRight: '15px'}}><img style={{width: '100%'}} src={this.state.friend.image} alt={this.state.friend.name} /></div>
           <div>
           <Card.Title>{this.state.friend.name}</Card.Title>
-          <Card.Link href={userLink}>view conversation</Card.Link>
+          <Link to={{
+            pathname: userLink,
+              state: {
+                convo: this.state.convo,
+                recipient: this.state.friend
+              }
+          }}>view conversation</Link>
           </div>
         </div>
       </Card>

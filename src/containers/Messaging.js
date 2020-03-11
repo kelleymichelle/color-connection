@@ -16,26 +16,35 @@ class Messaging extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.currentUser) {
-      const userId = this.props.currentUser.id
-      this.fetchUser(userId)
+    if (this.props.location.state) {
+      this.setState({
+        recipient: this.props.location.state.recipient,
+        // conversation: this.props.location.state.convo,
+        currentUser: this.props.currentUser
+      })
     }
   }
 
   componentDidUpdate(prevProps) {
-    if ( (this.props.currentUser !== prevProps.currentUser) || (this.state.currentUser && this.state.conversation === []) ) {
+    if ( (this.props.currentUser !== prevProps.currentUser) || (this.state.recipient && this.state.conversation === []) ) {
       const userId = this.props.match.params.userId
       this.fetchUser(userId)
     }
   }
 
   fetchUser = id => {
+    // if (this.props.location.state.convo && this.props.location.state.user) {
+    //   this.setState({
+    //     convo: this.props.location.state.convo,
+    //     recipient: this.props.location.state.user
+    //   })
+    // } else {
     const currentUser = this.props.currentUser.id
     axios.get(`http://localhost:3001/users/${id}`, { params: { currentUser } } ,
     {withCredentials: true})
     .then(response => {
       // debugger
-      // console.log(response.data.user)
+      console.log("fetched conversation")
       this.setState({
         recipient: response.data.user,
         conversation: response.data.conversation || [],
@@ -44,6 +53,7 @@ class Messaging extends React.Component {
       })
     })
     .catch(error => console.log(error))
+    // }
   }
 
   handleMessageSubmit = data => {

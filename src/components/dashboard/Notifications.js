@@ -17,9 +17,7 @@ export default class Notifications extends React.Component {
     if (this.props.currentUser) {
       const user = this.props.currentUser
       this.fetchNotifications(user)
-      // this.setState({
-      //   currentUser: this.props.currentUser
-      // })
+     
     }
   }
 
@@ -45,11 +43,6 @@ export default class Notifications extends React.Component {
       .catch(error => console.log(error))
       }
   }
-
-  // closeToast = e => {
-  //   console.log("toastie clicked")
-  //   console.log(e.target)
-  // }
 
   parseNotifications = () => {
     return this.state.notifications.map(note => {
