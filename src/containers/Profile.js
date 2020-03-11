@@ -101,8 +101,8 @@ class Profile extends React.Component {
           <Location location={user.location} />
           <UserBio bio={user.bio} />
           <Gender gender={user.gender} />
-          { user.id === this.props.currentUser.id ? null : <LikeButton user={user}/> }
-          {/* <LikeButton following={this.props.following} user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/> */}
+          {/* { user.id === this.props.currentUser.id ? null : <LikeButton following={this.props.following} user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/> } */}
+          <LikeButton currentUser={this.props.currentUser} following={this.props.following} user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/>
         </Card.Body>
         
       </Card>

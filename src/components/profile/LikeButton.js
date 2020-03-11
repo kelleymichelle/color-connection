@@ -32,6 +32,8 @@ export default class LikeButton extends React.Component {
       return (
         <img onClick={this.props.handleUnlikeClick} style={{ width: '5%', marginTop: '10px'}} src={heart} alt="heart" />
       )
+    } else if ( this.props.currentUser.id === user.id ) {
+      return null
     } else {
       return (
           <img onClick={this.props.handleLikeClick} style={{ width: '5%', marginTop: '10px'}} src={unheart} alt="unheart" />

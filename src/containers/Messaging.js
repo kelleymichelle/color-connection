@@ -17,12 +17,10 @@ class Messaging extends React.Component {
 
   componentDidMount() {
     if (this.props.location.state) {
-      this.setState({
-        recipient: this.props.location.state.recipient,
-        // conversation: this.props.location.state.convo,
-        currentUser: this.props.currentUser
-      })
+      const recipientId = this.props.location.state.recipient.id
+      return this.fetchUser(recipientId)
     }
+
   }
 
   componentDidUpdate(prevProps) {
