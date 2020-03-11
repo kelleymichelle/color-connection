@@ -15,6 +15,9 @@ import { connect } from 'react-redux'
        birthday: props.user.birthday,
        gender: props.user.gender,
        location: props.user.location,
+       bio: props.user.bio,
+       animal: props.user.animal,
+       loveLanguage: props.user.loveLanguage,
        redirect: ''
        
      }
@@ -33,13 +36,13 @@ import { connect } from 'react-redux'
     })
   }
 
-  handleAnimalClick = e => {
-    // console.log(e.target.innerText)
-    const animal = e.target.innerText
-    this.setState({
-      animal: animal
-    })
-  }
+  // handleAnimalClick = e => {
+  //   // console.log(e.target.innerText)
+  //   const animal = e.target.innerText
+  //   this.setState({
+  //     animal: animal
+  //   })
+  // }
 
   handleOnSubmit = e => {
     e.preventDefault()
@@ -93,19 +96,78 @@ import { connect } from 'react-redux'
             <Form.Control type="text" name="location" value={this.state.location} onChange={this.handleOnChange} placeholder={this.props.user.location}/>
           </Form.Group>
 
-          <Form.Group>
+          {/* <Form.Group>
             <Form.Label>Cat person or Dog person?</Form.Label>
 
               <p value="cats" name="cats" onClick={this.handleAnimalClick}>Cats</p>
 
               <p value="dogs" name="dogs" onClick={this.handleAnimalClick}>Dogs</p>
 
-          </Form.Group>
+          </Form.Group> */}
 
-          {/* // <Form.Group>
-          //   <Form.Label>Favorite Animal?</Form.Label>
-          //   <Form.Control type="text" name="animal" value={this.state.animal} />
-          // </Form.Group> */}
+          <Form.Group>
+            <Form.Label>Pick one:</Form.Label>
+            <Form.Check
+              // required
+              type="radio"
+              value="cats"
+              name="animal"
+              onChange={this.handleOnChange}
+              label="Cats"
+            />
+            <Form.Check
+              // required
+              type="radio"
+              value="dogs"
+              name="animal"
+              onChange={this.handleOnChange}
+              label="Dogs"
+            />
+         </Form.Group>
+
+         <Form.Group>
+            <Form.Label>What's your primary love language?</Form.Label>
+            <Form.Check
+              // required
+              type="radio"
+              value="Physical Touch"
+              name="loveLanguage"
+              onChange={this.handleOnChange}
+              label="Physical Touch"
+            />
+            <Form.Check
+              // required
+              type="radio"
+              value="Words of Affirmation"
+              name="loveLanguage"
+              onChange={this.handleOnChange}
+              label="Words of Affirmation"
+            />
+            <Form.Check
+              // required
+              type="radio"
+              value="Acts of Service"
+              name="loveLanguage"
+              onChange={this.handleOnChange}
+              label="Acts of Service"
+            />
+            <Form.Check
+              // required
+              type="radio"
+              value="Quality Time"
+              name="loveLanguage"
+              onChange={this.handleOnChange}
+              label="Quality Time"
+            />
+            <Form.Check
+              // required
+              type="radio"
+              value="Recieving Gifts"
+              name="loveLanguage"
+              onChange={this.handleOnChange}
+              label="Recieving Gifts"
+            />
+         </Form.Group>
 
           {/* <Form.Group>
             <Form.Label>Are you a Night Owl or a Morning Person?</Form.Label>

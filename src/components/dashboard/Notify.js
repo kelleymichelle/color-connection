@@ -8,7 +8,7 @@ export default function Notify(props) {
   const toggleShowA = () => setShowA(!showA);
 
   return (
-    <Toast show={showA} key={props.note.id} onClose={toggleShowA}>
+    <Toast show={showA} onClose={toggleShowA}>
       <Toast.Header>
         <strong>Notification</strong>
       </Toast.Header>

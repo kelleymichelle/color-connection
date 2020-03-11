@@ -52,15 +52,16 @@ const userReducer = (state = {
         const gender = { gender: action.payload.gender }
         const location = { location: action.payload.location }
         const bio = { bio: action.payload.bio }
-        const zodiac = { zodiac: action.payload.zodiac}
+        const zodiac = { zodiac: action.payload.zodiac }
         const status = { status: action.payload.status }
         const image = { image: action.payload.image }
         const animal = { animal: action.payload.animal }
+        const loveLanguage = { loveLanguage: action.payload.loveLanguage }
         // debugger
         // console.log(birthday, gender, location)
         return {
           ...state,
-          currentUser: Object.assign(state.currentUser, birthday, gender, location, zodiac, bio, status, image, animal)
+          currentUser: Object.assign(state.currentUser, birthday, gender, location, zodiac, bio, status, image, animal, loveLanguage)
         }
 
         case 'LOAD_CONVERSATION':

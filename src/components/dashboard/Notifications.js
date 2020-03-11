@@ -47,7 +47,7 @@ export default class Notifications extends React.Component {
   parseNotifications = () => {
     return this.state.notifications.map(note => {
       return (
-        <Notify note={note} />
+        <Notify note={note} key={note.id}/>
       )
     })
   }
