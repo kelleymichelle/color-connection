@@ -87,7 +87,7 @@ class Profile extends React.Component {
     return (
       <Card className="d-flex flex-row" style={{padding: '2em'}}>
         
-        { user.image ? <Card.Img variant="left" style={{width: '25%'}} src={user.image} alt="user" /> : null }
+        { user.image ? <Card.Img variant="left" style={{width: '30%'}} src={user.image} alt="user" /> : null }
        {/* <div> */}
         <Card.Body>
 
