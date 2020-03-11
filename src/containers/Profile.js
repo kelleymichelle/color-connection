@@ -85,10 +85,10 @@ class Profile extends React.Component {
     if (this.state.user) {
     const user = this.state.user
     return (
-      <Card className="d-flex flex-row flex-wrap" style={{padding: '2em'}}>
+      <Card className="d-flex flex-row" style={{padding: '2em'}}>
         
         { user.image ? <Card.Img variant="left" style={{width: '25%'}} src={user.image} alt="user" /> : null }
-       
+       {/* <div> */}
         <Card.Body>
 
           <div className="d-flex flex-row align-items-center">
@@ -96,17 +96,17 @@ class Profile extends React.Component {
             <div style={{margin: '3px'}}><ColorToken color={user.color} /></div>
             <div style={{margin: '3px'}}><Zodiac zodiac={user.zodiac} /></div>
           </div>  
-          <div style={{margin: "8px"}} className="d-flex flex-row align-items-center">
+          <div style={{margin: "8px"}} className="d-flex flex-row flex-wrap align-items-center">
             { user.status ? <> <h6 style={{marginRight: "5px"}}>Current Status: </h6> <h5>"{user.status}"</h5> </> : null }
           </div>
           <Location location={user.location} />
           <UserBio bio={user.bio} />
           <Gender gender={user.gender} />
-          <div><AnimalIcon animal={user.animal} /></div>
+          { user.animal ? (<div style={{margin: '5px'}} className="d-flex align-items-center"><AnimalIcon animal={user.animal} /> person</div>) : null}
           {/* { user.id === this.props.currentUser.id ? null : <LikeButton following={this.props.following} user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/> } */}
           <LikeButton currentUser={this.props.currentUser} following={this.props.following} user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/>
         </Card.Body>
-        
+        {/* </div> */}
       </Card>
     )}
     return (
