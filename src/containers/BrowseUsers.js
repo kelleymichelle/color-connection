@@ -3,21 +3,29 @@ import axios from 'axios'
 
 import UserCard from '../components/UserCard'
 import { Dropdown } from 'react-bootstrap'
+import Button from 'react-bootstrap/Button'
+
 
 export default class BrowseUsers extends React.Component {
   state = {
-    users: []
+    users: [],
+    title: 'Browse Possible Connections'
   }
 
   componentDidMount() {
+    this.fetchAllUsers()
+    }
+    
+  fetchAllUsers = () => {
     axios.get(`http://localhost:3001/users`,
       {withCredentials: true})
       .then(response => {
         this.setState({
-          users: response.data.users
+          users: response.data.users,
+          title: 'Browse Possible Connections'
         })
       })
-    }   
+  }  
   
   parseUsers = users => {
     users.map(u => 
@@ -25,13 +33,59 @@ export default class BrowseUsers extends React.Component {
     )
   }
 
+  handleColorSearch = e => {
+    e.preventDefault()
+    console.log(e.target.innerText)
+    const query = e.target.innerText.toLowerCase()
+
+    axios.get(`http://localhost:3001/users/search/color/${query}`,
+      {withCredentials: true})
+      .then(response => {
+        if (response.data.length > 0) {
+          this.setState({
+            users: response.data,
+            title: `Showing Users by ${query}`
+          })
+        } else {
+          this.setState({
+            users: [],
+            title: "Sorry, no users curretly match your search!"
+          })
+        }
+      })
+  }
+
+  handleZodiacSearch = e => {
+    e.preventDefault()
+   
+    console.log(e.target.innerText)
+    const query = e.target.innerText
+
+    axios.get(`http://localhost:3001/users/search/zodiac/${query}`,
+      {withCredentials: true})
+      .then(response => {
+        if (response.data.length > 0) {
+          this.setState({
+            users: response.data,
+            title: `Showing Users by ${query}`
+          })
+        } else {
+          this.setState({
+            users: [],
+            title: "Sorry, no users curretly match your search!"
+          })
+        }
+      })
+  }
+
   render() {
    
     return (
       <div style={{margin: '25px'}}>
-        <h1>Browse Possible Connections</h1>
+        <h1>{this.state.title}</h1>
         <div className="d-flex">
           <div style={{margin: '5px'}}>Search By</div>
+            <div style={{margin: '5px'}}><Button onClick={() => this.fetchAllUsers()}>Show All Users</Button></div>
           <div style={{margin: '5px'}}>
             <Dropdown>
               <Dropdown.Toggle id="dropdown-basic">
@@ -39,10 +93,10 @@ export default class BrowseUsers extends React.Component {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item>Blue</Dropdown.Item>
-                <Dropdown.Item>Green</Dropdown.Item>
-                <Dropdown.Item>Orange</Dropdown.Item>
-                <Dropdown.Item>Gold</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleColorSearch}>Blue</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleColorSearch}>Green</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleColorSearch}>Orange</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleColorSearch}>Gold</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -53,17 +107,17 @@ export default class BrowseUsers extends React.Component {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item>Aries</Dropdown.Item>
-                <Dropdown.Item>Taurus</Dropdown.Item>
-                <Dropdown.Item>Gemini</Dropdown.Item>
-                <Dropdown.Item>Cancer</Dropdown.Item>
-                <Dropdown.Item>Leo</Dropdown.Item>
-                <Dropdown.Item>Virgo</Dropdown.Item>
-                <Dropdown.Item>Libra</Dropdown.Item>
-                <Dropdown.Item>Scorpio</Dropdown.Item>
-                <Dropdown.Item>Sagittarius</Dropdown.Item>
-                <Dropdown.Item>Aquarius</Dropdown.Item>
-                <Dropdown.Item>Pisces</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Aries</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Taurus</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Gemini</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Cancer</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Leo</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Virgo</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Libra</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Scorpio</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Sagittarius</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Aquarius</Dropdown.Item>
+                <Dropdown.Item onClick={this.handleZodiacSearch}>Pisces</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
