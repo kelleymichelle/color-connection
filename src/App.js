@@ -102,6 +102,10 @@ class App extends React.Component {
                 loggedInStatus={this.state.isLoggedIn} />
             )} />
           <Route 
+            exact path="/logout"
+            render={() => (<Redirect to="/" />)}
+          />
+          <Route 
             exact path="/login" 
             render={props => {
               return this.state.isLoggedIn ? (

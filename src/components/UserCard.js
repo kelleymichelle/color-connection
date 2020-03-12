@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 
 import Zodiac from './profile/Zodiac'
+import Location from './profile/Location'
 // import LikeButton from './profile/LikeButton'
 
 export default function UserCard(props) {
@@ -46,12 +47,16 @@ export default function UserCard(props) {
             user: user
           }
         }}>
+          <center>
           <Card.Img style={{ width: '80%' }} variant="top" src={user.image} />
-            <Card.Title>{user.name}</Card.Title>
+            <Card.Title>{user.name}</Card.Title></center>
         </Link>
             <div style={{margin: '5px'}} className="d-flex flex-row align-items-center justify-content-start">
+              
+              {/* <Card.Subtitle style={{marginLeft: '10px'}}> */}
+                <Location location={user.location} />
+              {/* </Card.Subtitle> */}
               <Zodiac zodiac={user.zodiac}/>
-              <Card.Subtitle style={{marginLeft: '10px'}}>{user.location}</Card.Subtitle>
             </div>
               {/* <LikeButton user={user}/> */}
           </Card.Body>

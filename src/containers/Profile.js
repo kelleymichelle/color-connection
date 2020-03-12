@@ -7,6 +7,7 @@ import Location from '../components/profile/Location'
 import Gender from '../components/profile/Gender'
 // import UserImage from '../components/profile/UserImage'
 import LikeButton from '../components/profile/LikeButton'
+import LoveLanguage from '../components/profile/LoveLanguage'
 
 import { connect } from 'react-redux'
 
@@ -102,8 +103,9 @@ class Profile extends React.Component {
           <Location location={user.location} />
           <UserBio bio={user.bio} />
           <Gender gender={user.gender} />
+
           { user.animal ? (<div style={{margin: '5px'}} className="d-flex align-items-center"><AnimalIcon animal={user.animal} /> person</div>) : null}
-          {/* { user.id === this.props.currentUser.id ? null : <LikeButton following={this.props.following} user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/> } */}
+          { user.loveLanguage ? <LoveLanguage loveLanguage={user.loveLanguage} /> : null }
           <LikeButton currentUser={this.props.currentUser} following={this.props.following} user={user} handleLikeClick={this.handleLikeClick} handleUnlikeClick={this.handleUnlikeClick}/>
         </Card.Body>
         {/* </div> */}

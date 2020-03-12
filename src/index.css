@@ -34,3 +34,8 @@ h1 {
 div {
   font-family: 'Quicksand';
 }
+
+img {
+  /* max-height: 350px; */
+  /* overflow: hidden; */
+}
