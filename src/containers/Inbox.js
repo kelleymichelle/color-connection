@@ -52,6 +52,7 @@ export default class Inbox extends React.Component {
 
   render() {
     if (this.state.fetched === false) {
+      this.fetchInbox()
       return (
         <>
         <Spinner animation="grow" variant="primary"/> <h1>Loading Inbox...</h1>

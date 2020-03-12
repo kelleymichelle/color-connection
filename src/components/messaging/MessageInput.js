@@ -9,8 +9,8 @@ import { connect } from 'react-redux'
 class MessageInput extends React.Component {
   state = {
     content: '',
-    currentUser: '',
-    recipient: ''
+    currentUser: this.props.currentUser,
+    recipient: this.props.recipient
   }
 
   componentDidUpdate(prevProps) {

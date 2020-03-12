@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
+import Spinner from 'react-bootstrap/Spinner'
+
 import { connect } from 'react-redux'
 
 import Message from '../components/messaging/Message'
@@ -11,7 +13,8 @@ class Messaging extends React.Component {
   state = {
     currentUser: '',
     recipient: '',
-    conversation: []
+    conversation: [],
+    loading: true
     
   }
 
@@ -46,7 +49,8 @@ class Messaging extends React.Component {
       this.setState({
         recipient: response.data.user,
         conversation: response.data.conversation || [],
-        currentUser: this.props.currentUser
+        currentUser: this.props.currentUser,
+        loading: false
        
       })
     })
@@ -77,6 +81,13 @@ class Messaging extends React.Component {
   }
 
   render() {
+    if (this.state.loading === true) {
+      return (
+        <>
+        <Spinner animation="grow" variant="primary" /><h1>Loading...</h1>
+        </>
+      )
+    }
     return (
       <div style={{margin: '25px'}}>
         <h1>Conversation with {this.state.recipient.name}</h1>
