@@ -35,7 +35,12 @@ div {
   font-family: 'Quicksand';
 }
 
-img {
-  /* max-height: 350px; */
-  /* overflow: hidden; */
+#card-img {
+  max-width: 80%;
+  max-height: 250px;
+}
+
+#profile-pic {
+  max-height: 450px;
+  max-width: 30%;
 }

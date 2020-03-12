@@ -34,7 +34,8 @@ export default function UserCard(props) {
     backgroundColor: colorStyle(user.color), 
     borderColor: colorStyle(user.color), 
     borderWidth: '4px', 
-    margin: '10px'
+    margin: '10px',
+    height: '400px'
   }
 
   return (
@@ -48,7 +49,7 @@ export default function UserCard(props) {
           }
         }}>
           <center>
-          <Card.Img style={{ width: '80%' }} variant="top" src={user.image} />
+          { user.image ? <Card.Img id="card-img" variant="top" src={user.image} /> : <Card.Img id="card-img" variant="top" src="https://res.cloudinary.com/color-connection/image/upload/v1584032700/default-user-img_kdefff.png" />}
             <Card.Title>{user.name}</Card.Title></center>
         </Link>
             <div style={{margin: '5px'}} className="d-flex flex-row align-items-center justify-content-start">
