@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 
 import Card from 'react-bootstrap/Card'
 
+// import Spinner from 'react-bootstrap/Spinner'
+
 // import Horoscope from '../components/dashboard/Horoscope'
 import ColorToken from '../components/dashboard/ColorToken'
 import FetchHoroscope from '../components/FetchHoroscope'
@@ -56,6 +58,12 @@ class Dashboard extends React.Component {
   
       const user = this.state.user
       const userProfile = `/user/${user.id}`
+
+      // if (user === undefined) {
+      //   return (
+      //     <Spinner animation="grow"/>
+      //   )
+      // } else {
 
       return(
         <div style={{color: '#444444'}}>
@@ -112,10 +120,11 @@ class Dashboard extends React.Component {
           <SuggestedConnections />
           
       </div>
+            // }
     )
   }
-
-}
+  }
+// }
 
 const mapStateToProps = state => ({currentUser: state.currentUser})
 

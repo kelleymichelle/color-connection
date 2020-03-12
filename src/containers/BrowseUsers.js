@@ -35,7 +35,7 @@ export default class BrowseUsers extends React.Component {
 
   handleColorSearch = e => {
     e.preventDefault()
-    console.log(e.target.innerText)
+    // console.log(e.target.innerText)
     const query = e.target.innerText.toLowerCase()
 
     axios.get(`http://localhost:3001/users/search/color/${query}`,
@@ -49,7 +49,7 @@ export default class BrowseUsers extends React.Component {
         } else {
           this.setState({
             users: [],
-            title: "Sorry, no users curretly match your search!"
+            title: "Sorry, no users currently match your search!"
           })
         }
       })
@@ -58,7 +58,7 @@ export default class BrowseUsers extends React.Component {
   handleZodiacSearch = e => {
     e.preventDefault()
    
-    console.log(e.target.innerText)
+    // console.log(e.target.innerText)
     const query = e.target.innerText
 
     axios.get(`http://localhost:3001/users/search/zodiac/${query}`,
@@ -72,7 +72,7 @@ export default class BrowseUsers extends React.Component {
         } else {
           this.setState({
             users: [],
-            title: "Sorry, no users curretly match your search!"
+            title: "Sorry, no users currently match your search!"
           })
         }
       })

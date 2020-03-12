@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import Conversation from '../components/messaging/Conversation'
 
+import Spinner from 'react-bootstrap/Spinner'
+
 export default class Inbox extends React.Component {
   state = {
     currentUser: [],
@@ -49,13 +51,21 @@ export default class Inbox extends React.Component {
   }
 
   render() {
+    if (this.state.fetched === false) {
+      return (
+        <>
+        <Spinner animation="grow" variant="primary"/> <h1>Loading Inbox...</h1>
+        </>
+      )
+    }
+    // } else {
     return (
       <div style={{margin: '1%'}}>
         <h1 style={{margin: '2%'}}>Inbox</h1>
         { this.state.fetched === true ? null : this.fetchInbox() }
         <div>{ this.state.conversations.map(c => <Conversation  key={c[0].id} currentUser={this.state.currentUser} convo={c} /> ) }</div>
       </div>
-
     )
+    // }
   }
 }
