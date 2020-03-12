@@ -26,7 +26,17 @@ import SuggestedConnections from '../components/dashboard/SuggestedConnections'
 
 class Dashboard extends React.Component {
   state = {
-    user: this.props.currentUser
+    user: '',
+    loading: true
+  }
+
+  componentDidMount() {
+    if (this.props.currentUser) {
+      this.setState({
+        user: this.props.currentUser,
+        loading: false
+      })
+    }
   }
 
   userGreeting = () => {
@@ -45,7 +55,8 @@ class Dashboard extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       this.setState({
-        user: this.props.currentUser
+        user: this.props.currentUser,
+        loading: false
       })
     }
   }
@@ -59,15 +70,14 @@ class Dashboard extends React.Component {
       const user = this.state.user
       const userProfile = `/user/${user.id}`
 
-      // if (user === undefined) {
+      // if (this.state.loading === true) {
       //   return (
       //     <Spinner animation="grow"/>
       //   )
-      // } else {
+      // }
 
       return(
         <div style={{color: '#444444'}}>
-          {/* <NewUserAlerts color={user.color} toggleNewUserStatus={this.toggleNewUserStatus}/> */}
           { user.newUser ? <NewUserAlerts color={user.color} toggleNewUserStatus={this.toggleNewUserStatus}/> : null }
         <div style={{margin: '10px'}} className="d-flex">
           <h2 style={{marginRight: '10px'}}>{this.userGreeting()}, {user.name}</h2> 
@@ -93,7 +103,7 @@ class Dashboard extends React.Component {
           <Card style={{padding: '10px', width: '33%', marginLeft: '4px'}}>
             
             <div style={{width: '300px', margin: '10px'}}>
-              { user.image ? <img style={{width: '70%'}} src={user.image} alt="user" /> : null }
+              { user.image ? <img style={{width: '70%'}} src={user.image} alt="user" /> : <img style={{width: '70%'}} src="https://res.cloudinary.com/color-connection/image/upload/v1584032700/default-user-img_kdefff.png" alt="default user" /> } 
             </div>
             <Link style={{margin: '5px', color: '#444444'}} to=
               {{
