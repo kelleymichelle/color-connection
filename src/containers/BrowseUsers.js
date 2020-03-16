@@ -124,7 +124,7 @@ export default class BrowseUsers extends React.Component {
           <div style={{margin: '5px'}}>Keyword</div>
         </div>
         <div className="d-flex flex-row flex-wrap">
-          {this.state.users.map(u => <UserCard key={u.id} user={u} />)}
+          {this.state.users.map(u => u.color ? <UserCard key={u.id} user={u} /> : null )}
         </div>
       </div>
     )
