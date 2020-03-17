@@ -21,19 +21,36 @@ Users can like or follow each other and once that connection is made, they have 
 
 ### Possible Future Changes or Upgrades
 
+- Suggested connections based on compatibility
+- scrollable div for conversations
+- Instant Messaging using Firebase
 
 
 ### Technologies
 
+Rails as an API for the server-side. React js with JSX for the client-side.
 
 
 ### Setup
 
-
+Coming soon
 
 ### Resources
 
-
+- https://truecolorsintl.com/the-four-color-personalities/
+- https://medium.com/how-i-get-it/react-with-rails-user-authentication-8977e98762f2
+- https://dev.to/projectescape/programmatic-navigation-in-react-3p1l
+- https://stackoverflow.com/questions/52064303/reactjs-pass-props-with-redirect-component
+- https://learnwithparam.com/blog/dynamic-pages-in-react-router/
+- https://tylermcginnis.com/react-router-pass-props-to-link/
+- https://alligator.io/react/axios-react/
+- https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+- https://cloudinary.com/documentation/rails_image_and_video_upload#rails_image_upload
+- https://flaviocopes.com/how-to-remove-item-from-array/
+- https://getemoji.com/
+- https://medium.com/@ingridf/the-power-of-self-referential-associations-in-rails-and-self-joins-a9d31b181e4
+- https://momentjs.com/
+- https://stackoverflow.com/questions/46058065/how-to-add-a-new-attribute-to-a-model-activerecord-in-ruby
 
 ### License
 
