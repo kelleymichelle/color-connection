@@ -1,8 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 # Color Connection
 
 Social Media/ Dating application built using React and JSX for the frontend and Rails for the backend.
+
+Link to Color Connection API:
+https://github.com/kelleymichelle/color-connection-API
 
 
 ## Table of Contents
